@@ -26,6 +26,9 @@
 			<Item Name="StopEvent.vi" Type="VI" URL="../UserEvents/StopEvent.vi"/>
 		</Item>
 		<Item Name="Package" Type="Folder"/>
+		<Item Name="Visualization" Type="Folder">
+			<Item Name="Visualization.lvlib" Type="Library" URL="../../NistPluggableModules/Visualization/Visualization.lvlib"/>
+		</Item>
 		<Item Name="cntlRefs.ctl" Type="VI" URL="../TypeDefs/cntlRefs.ctl"/>
 		<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
 		<Item Name="Config_class.lvlib" Type="Library" URL="../../lv_config_class/Config_class.lvlib"/>
@@ -582,8 +585,12 @@
 				<Item Name="NI_Matrix.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/Matrix/NI_Matrix.lvlib"/>
 				<Item Name="NI_PackedLibraryUtility.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/LVLibp/NI_PackedLibraryUtility.lvlib"/>
 				<Item Name="NI_PtbyPt.lvlib" Type="Library" URL="/&lt;vilib&gt;/ptbypt/NI_PtbyPt.lvlib"/>
+				<Item Name="NIMS V(S).vi" Type="VI" URL="/&lt;vilib&gt;/imath/engines/lvmath2/RunTimeEngine/IndexRead/NIMS V(S).vi"/>
+				<Item Name="NIMS_CH_String to Character Array.vi" Type="VI" URL="/&lt;vilib&gt;/imath/engines/lvmath/Plug In/_Char/NIMS_CH_String to Character Array.vi"/>
 				<Item Name="NIMS_Finalize Error.vi" Type="VI" URL="/&lt;vilib&gt;/imath/engines/lvmath2/RunTimeEngine/ErrorHandling/NIMS_Finalize Error.vi"/>
+				<Item Name="NIMS_NodeEndStatement_Get Vector.vi" Type="VI" URL="/&lt;vilib&gt;/imath/engines/lvmath2/RunTimeEngine/NodeEndStatement/NIMS_NodeEndStatement_Get Vector.vi"/>
 				<Item Name="NIMS_NodeEndStatement_Output.vi" Type="VI" URL="/&lt;vilib&gt;/imath/engines/lvmath2/RunTimeEngine/NodeEndStatement/NIMS_NodeEndStatement_Output.vi"/>
+				<Item Name="NIMS_Range.vi" Type="VI" URL="/&lt;vilib&gt;/imath/engines/lvmath2/RunTimeEngine/RangeToken/NIMS_Range.vi"/>
 				<Item Name="NIMS_RunTimeType_From StrictType (excl LVString).vi" Type="VI" URL="/&lt;vilib&gt;/imath/engines/lvmath2/RunTimeEngine/RunTimeType/NIMS_RunTimeType_From StrictType (excl LVString).vi"/>
 				<Item Name="NIMS_UserFunction_CondDefined.vi" Type="VI" URL="/&lt;vilib&gt;/imath/engines/lvmath2/RunTimeEngine/UserFunctionToken/NIMS_UserFunction_CondDefined.vi"/>
 				<Item Name="NIMS_VariableToken_CondDefined.vi" Type="VI" URL="/&lt;vilib&gt;/imath/engines/lvmath2/RunTimeEngine/VariableToken/NIMS_VariableToken_CondDefined.vi"/>
@@ -651,6 +658,11 @@
 			<Item Name="MCStatic_33557714032_2a086723b300757754c1f2e7c44bb5da_1FF32336D96047398975794AD73DCA60_000.vi" Type="VI" URL="/&lt;instcachedir&gt;/0/MCStatic_33557714032_2a086723b300757754c1f2e7c44bb5da_1FF32336D96047398975794AD73DCA60.lvgen/MCStatic_33557714032_2a086723b300757754c1f2e7c44bb5da_1FF32336D96047398975794AD73DCA60_000.vi"/>
 			<Item Name="MCStatic_33557714032_c33f274163dfe83271b63dbf12414419.vi" Type="VI" URL="../../../../../PowerLabNI3/Documents/LabVIEW Data/MathScriptVIs/MCStatic_33557714032_c33f274163dfe83271b63dbf12414419.vi"/>
 			<Item Name="MCStatic_33557714032_c33f274163dfe83271b63dbf12414419_69CD31CCC4D34F6AB17CAF1A14FDA296_000.vi" Type="VI" URL="/&lt;instcachedir&gt;/0/MCStatic_33557714032_c33f274163dfe83271b63dbf12414419_69CD31CCC4D34F6AB17CAF1A14FDA296.lvgen/MCStatic_33557714032_c33f274163dfe83271b63dbf12414419_69CD31CCC4D34F6AB17CAF1A14FDA296_000.vi"/>
+			<Item Name="MCStatic_33564263232_4d8935da10af67934e26c76271b4abc0.vi" Type="VI" URL="../../../../../../Labview Data/MathScriptVIs/MCStatic_33564263232_4d8935da10af67934e26c76271b4abc0.vi"/>
+			<Item Name="MCStatic_33564263232_24a1c065333935aa4738809c0966bb17.vi" Type="VI" URL="../../../../../../Labview Data/MathScriptVIs/MCStatic_33564263232_24a1c065333935aa4738809c0966bb17.vi"/>
+			<Item Name="MCStatic_33564263232_7322b8936ace9060bcc211f5c44c036d.vi" Type="VI" URL="../../../../../../Labview Data/MathScriptVIs/MCStatic_33564263232_7322b8936ace9060bcc211f5c44c036d.vi"/>
+			<Item Name="MCStatic_33564263232_af0cd013292a3e2d5512c6b2b326fae0.vi" Type="VI" URL="../../../../../../Labview Data/MathScriptVIs/MCStatic_33564263232_af0cd013292a3e2d5512c6b2b326fae0.vi"/>
+			<Item Name="MCStatic_33564263232_cd0c74153415d248b874e5dd603eedc9.vi" Type="VI" URL="../../../../../../Labview Data/MathScriptVIs/MCStatic_33564263232_cd0c74153415d248b874e5dd603eedc9.vi"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -666,6 +678,8 @@
 			<Item Name="SensorPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Sensor/SensorPlugins/SensorPlugins.lvlib"/>
 			<Item Name="SyncModule.lvlib" Type="Library" URL="../../NistPluggableModules/Sync/SyncModule/SyncModule.lvlib"/>
 			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Sync/SyncPlugins/SyncPlugins.lvlib"/>
+			<Item Name="WfrmModule.lvlib" Type="Library" URL="../../NistPluggableModules/WfrmGenerator/WfrmModule/WfrmModule.lvlib"/>
+			<Item Name="WfrmPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/WfrmGenerator/WfrmPlugins/WfrmPlugins.lvlib"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
