@@ -33,6 +33,7 @@
 		<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
 		<Item Name="Config_class.lvlib" Type="Library" URL="../../lv_config_class/Config_class.lvlib"/>
 		<Item Name="Ini_lib.lvlib" Type="Library" URL="../../LV_Ini/Ini_lib.lvlib"/>
+		<Item Name="LogMessage.vi" Type="VI" URL="../Framework/LogMessage.vi"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="Queue.lvlib" Type="Library" URL="../Queue/Queue.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
@@ -659,10 +660,15 @@
 			<Item Name="MCStatic_33557714032_c33f274163dfe83271b63dbf12414419.vi" Type="VI" URL="../../../../../PowerLabNI3/Documents/LabVIEW Data/MathScriptVIs/MCStatic_33557714032_c33f274163dfe83271b63dbf12414419.vi"/>
 			<Item Name="MCStatic_33557714032_c33f274163dfe83271b63dbf12414419_69CD31CCC4D34F6AB17CAF1A14FDA296_000.vi" Type="VI" URL="/&lt;instcachedir&gt;/0/MCStatic_33557714032_c33f274163dfe83271b63dbf12414419_69CD31CCC4D34F6AB17CAF1A14FDA296.lvgen/MCStatic_33557714032_c33f274163dfe83271b63dbf12414419_69CD31CCC4D34F6AB17CAF1A14FDA296_000.vi"/>
 			<Item Name="MCStatic_33564263232_4d8935da10af67934e26c76271b4abc0.vi" Type="VI" URL="../../../../../../Labview Data/MathScriptVIs/MCStatic_33564263232_4d8935da10af67934e26c76271b4abc0.vi"/>
+			<Item Name="MCStatic_33564263232_4d8935da10af67934e26c76271b4abc0_C0A0904B4EAB49B78AB0B22F4FB46D70_000.vi" Type="VI" URL="/&lt;instcachedir&gt;/0/MCStatic_33564263232_4d8935da10af67934e26c76271b4abc0_C0A0904B4EAB49B78AB0B22F4FB46D70.lvgen/MCStatic_33564263232_4d8935da10af67934e26c76271b4abc0_C0A0904B4EAB49B78AB0B22F4FB46D70_000.vi"/>
 			<Item Name="MCStatic_33564263232_24a1c065333935aa4738809c0966bb17.vi" Type="VI" URL="../../../../../../Labview Data/MathScriptVIs/MCStatic_33564263232_24a1c065333935aa4738809c0966bb17.vi"/>
+			<Item Name="MCStatic_33564263232_24a1c065333935aa4738809c0966bb17_7201A64FCC71402282BEAA67FEE2504E_000.vi" Type="VI" URL="/&lt;instcachedir&gt;/0/MCStatic_33564263232_24a1c065333935aa4738809c0966bb17_7201A64FCC71402282BEAA67FEE2504E.lvgen/MCStatic_33564263232_24a1c065333935aa4738809c0966bb17_7201A64FCC71402282BEAA67FEE2504E_000.vi"/>
 			<Item Name="MCStatic_33564263232_7322b8936ace9060bcc211f5c44c036d.vi" Type="VI" URL="../../../../../../Labview Data/MathScriptVIs/MCStatic_33564263232_7322b8936ace9060bcc211f5c44c036d.vi"/>
+			<Item Name="MCStatic_33564263232_7322b8936ace9060bcc211f5c44c036d_FD6C26AF7D604ED698836938523CBA8B_000.vi" Type="VI" URL="/&lt;instcachedir&gt;/0/MCStatic_33564263232_7322b8936ace9060bcc211f5c44c036d_FD6C26AF7D604ED698836938523CBA8B.lvgen/MCStatic_33564263232_7322b8936ace9060bcc211f5c44c036d_FD6C26AF7D604ED698836938523CBA8B_000.vi"/>
 			<Item Name="MCStatic_33564263232_af0cd013292a3e2d5512c6b2b326fae0.vi" Type="VI" URL="../../../../../../Labview Data/MathScriptVIs/MCStatic_33564263232_af0cd013292a3e2d5512c6b2b326fae0.vi"/>
+			<Item Name="MCStatic_33564263232_af0cd013292a3e2d5512c6b2b326fae0_3B518BEA2B9C45CB8A1676855454D908_000.vi" Type="VI" URL="/&lt;instcachedir&gt;/0/MCStatic_33564263232_af0cd013292a3e2d5512c6b2b326fae0_3B518BEA2B9C45CB8A1676855454D908.lvgen/MCStatic_33564263232_af0cd013292a3e2d5512c6b2b326fae0_3B518BEA2B9C45CB8A1676855454D908_000.vi"/>
 			<Item Name="MCStatic_33564263232_cd0c74153415d248b874e5dd603eedc9.vi" Type="VI" URL="../../../../../../Labview Data/MathScriptVIs/MCStatic_33564263232_cd0c74153415d248b874e5dd603eedc9.vi"/>
+			<Item Name="MCStatic_33564263232_cd0c74153415d248b874e5dd603eedc9_1BD6B912C34A4BF9A206F4FEB7E1A62C_000.vi" Type="VI" URL="/&lt;instcachedir&gt;/0/MCStatic_33564263232_cd0c74153415d248b874e5dd603eedc9_1BD6B912C34A4BF9A206F4FEB7E1A62C.lvgen/MCStatic_33564263232_cd0c74153415d248b874e5dd603eedc9_1BD6B912C34A4BF9A206F4FEB7E1A62C_000.vi"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
