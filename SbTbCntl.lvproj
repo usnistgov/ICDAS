@@ -26,6 +26,9 @@
 			<Item Name="StopEvent.vi" Type="VI" URL="../UserEvents/StopEvent.vi"/>
 		</Item>
 		<Item Name="Package" Type="Folder"/>
+		<Item Name="UserFiles" Type="Folder" URL="../../UserFiles">
+			<Property Name="NI.DISK" Type="Bool">true</Property>
+		</Item>
 		<Item Name="Visualization" Type="Folder">
 			<Item Name="Visualization.lvlib" Type="Library" URL="../../NistPluggableModules/Visualization/Visualization.lvlib"/>
 		</Item>
@@ -36,6 +39,8 @@
 		<Item Name="LogMessage.vi" Type="VI" URL="../Framework/LogMessage.vi"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="Queue.lvlib" Type="Library" URL="../Queue/Queue.lvlib"/>
+		<Item Name="SyncModule.lvlib" Type="Library" URL="../../NistPluggableModules/Sync/SyncModule/SyncModule.lvlib"/>
+		<Item Name="WfrmModule.lvlib" Type="Library" URL="../../NistPluggableModules/WfrmGenerator/WfrmModule/WfrmModule.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="Agilent 90000 Series.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Agilent 90000 Series.lvlib"/>
@@ -682,9 +687,7 @@
 			<Item Name="ScopePlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Scope/ScopePlugins/ScopePlugins.lvlib"/>
 			<Item Name="SensorModule.lvlib" Type="Library" URL="../../NistPluggableModules/Sensor/SensorModule/SensorModule.lvlib"/>
 			<Item Name="SensorPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Sensor/SensorPlugins/SensorPlugins.lvlib"/>
-			<Item Name="SyncModule.lvlib" Type="Library" URL="../../NistPluggableModules/Sync/SyncModule/SyncModule.lvlib"/>
 			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Sync/SyncPlugins/SyncPlugins.lvlib"/>
-			<Item Name="WfrmModule.lvlib" Type="Library" URL="../../NistPluggableModules/WfrmGenerator/WfrmModule/WfrmModule.lvlib"/>
 			<Item Name="WfrmPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/WfrmGenerator/WfrmPlugins/WfrmPlugins.lvlib"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
