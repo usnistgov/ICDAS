@@ -31,6 +31,7 @@
 		<Item Name="UserFiles" Type="Folder" URL="../../UserFiles">
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
+		<Item Name="AcPwrRemovedotInstrument.vi" Type="VI" URL="../Framework/AcPwrRemovedotInstrument.vi"/>
 		<Item Name="cntlRefs.ctl" Type="VI" URL="../TypeDefs/cntlRefs.ctl"/>
 		<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
 		<Item Name="LogMessage.vi" Type="VI" URL="../Framework/LogMessage.vi"/>
@@ -676,6 +677,7 @@
 			<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrPlugins/AcPwrPlugins.lvlib"/>
 			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../../NistPluggableModules/Analysis/AnalysisModule/AnalysisModule.lvlib"/>
 			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
+			<Item Name="Comms.lvlib" Type="Library" URL="../../LV_TestAutomation/Comms_lib/Comms.lvlib"/>
 			<Item Name="Config_class.lvlib" Type="Library" URL="../../LV_Config_class/Config_class.lvlib"/>
 			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../../NistPluggableModules/Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
 			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
