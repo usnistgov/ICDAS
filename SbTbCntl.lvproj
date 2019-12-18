@@ -38,7 +38,6 @@
 		<Item Name="UserFiles" Type="Folder" URL="../../UserFiles">
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
-		<Item Name="AcPwrRemovedotInstrument.vi" Type="VI" URL="../Framework/AcPwrRemovedotInstrument.vi"/>
 		<Item Name="cntlRefs.ctl" Type="VI" URL="../TypeDefs/cntlRefs.ctl"/>
 		<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
 		<Item Name="ErrorHandling.vi" Type="VI" URL="../../../../Desktop/AC Module Test/ErrorHandling.vi"/>
