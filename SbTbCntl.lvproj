@@ -46,7 +46,6 @@
 		<Item Name="GetPluginIndex.vi" Type="VI" URL="../GetPluginIndex.vi"/>
 		<Item Name="LogMessage.vi" Type="VI" URL="../Framework/LogMessage.vi"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
-		<Item Name="Test2.vi" Type="VI" URL="../Test2.vi"/>
 		<Item Name="TestCodeOut.vi" Type="VI" URL="../TestCodeOut.vi"/>
 		<Item Name="TranslateDataToComms.vi" Type="VI" URL="../TranslateDataToComms.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
