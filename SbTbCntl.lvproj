@@ -45,7 +45,7 @@
 		<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="TestCodeOut.vi" Type="VI" URL="../TestCodeOut.vi"/>
-		<Item Name="NHRRegen.vi" Type="VI" URL="../../../../Desktop/AC Module Test/NHRRegen.vi"/>
+		<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrPlugins/AcPwrPlugins.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="Agilent 3458.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 3458/Agilent 3458.lvlib"/>
@@ -685,7 +685,6 @@
 			</Item>
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="AcPwrModule.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
-			<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrPlugins/AcPwrPlugins.lvlib"/>
 			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../../NistPluggableModules/Analysis/AnalysisModule/AnalysisModule.lvlib"/>
 			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
 			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
@@ -736,10 +735,10 @@
 			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Sync/SyncPlugins/SyncPlugins.lvlib"/>
 			<Item Name="Tag-bool.lvlib" Type="Library" URL="/&lt;extravilib&gt;/ChannelInstances/Tag-bool.lvlib"/>
 			<Item Name="Visualization.lvlib" Type="Library" URL="../../NistPluggableModules/Visualization/Visualization.lvlib"/>
+			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
 			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>

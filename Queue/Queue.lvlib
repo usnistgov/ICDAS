@@ -8,6 +8,7 @@
 
 </Property>
 	<Item Name="clMessage.ctl" Type="VI" URL="../clMessage.ctl"/>
+	<Item Name="CloseQueue.vi" Type="VI" URL="../CloseQueue.vi"/>
 	<Item Name="Dequeue.vi" Type="VI" URL="../Dequeue.vi"/>
 	<Item Name="EnqueError.vi" Type="VI" URL="../EnqueError.vi"/>
 	<Item Name="Enqueue.vi" Type="VI" URL="../Enqueue.vi"/>
