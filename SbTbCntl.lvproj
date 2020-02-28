@@ -33,16 +33,24 @@
 			<Item Name="RefreshUserEvents.vi" Type="VI" URL="../UserEvents/RefreshUserEvents.vi"/>
 			<Item Name="StopEvent.vi" Type="VI" URL="../UserEvents/StopEvent.vi"/>
 		</Item>
-		<Item Name="subVIs" Type="Folder">
+		<Item Name="SGTB subVIs" Type="Folder">
 			<Item Name="LogMessage.vi" Type="VI" URL="../Framework/LogMessage.vi"/>
 			<Item Name="ExtractTypeFromFile.vi" Type="VI" URL="../ExtractTypeFromFile.vi"/>
-			<Item Name="UpdateFrameworkControls.vi" Type="VI" URL="../UpdateFrameworkControls.vi"/>
+			<Item Name="SetRingString.vi" Type="VI" URL="../SetRingString.vi"/>
+			<Item Name="PathToINIFiles.vi" Type="VI" URL="../Framework/PathToINIFiles.vi"/>
+			<Item Name="GetPluginType.vi" Type="VI" URL="../GetPluginType.vi"/>
+			<Item Name="LoadPlugin.vi" Type="VI" URL="../LoadPlugin.vi"/>
+			<Item Name="ConfigDialog.vi" Type="VI" URL="../ConfigDialog.vi"/>
+			<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
 		</Item>
 		<Item Name="UserFiles" Type="Folder" URL="../../UserFiles">
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
-		<Item Name="cntlRefs.ctl" Type="VI" URL="../TypeDefs/cntlRefs.ctl"/>
-		<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
+		<Item Name="SGTB TypeDefs" Type="Folder">
+			<Item Name="cntlRefs.ctl" Type="VI" URL="../TypeDefs/cntlRefs.ctl"/>
+			<Item Name="PluginType.ctl" Type="VI" URL="../TypeDefs/PluginType.ctl"/>
+			<Item Name="InstrumentModulesControl.ctl" Type="VI" URL="../Framework/InstrumentModulesControl.ctl"/>
+		</Item>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="TestCodeOut.vi" Type="VI" URL="../TestCodeOut.vi"/>
 		<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrPlugins/AcPwrPlugins.lvlib"/>
