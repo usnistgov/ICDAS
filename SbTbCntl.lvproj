@@ -615,6 +615,7 @@
 				<Item Name="Read Lines From File (with error IO).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Lines From File (with error IO).vi"/>
 				<Item Name="Read Delimited Spreadsheet (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (I64).vi"/>
 				<Item Name="Read Delimited Spreadsheet (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (string).vi"/>
+				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>
 			</Item>
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="AcPwrModule.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
@@ -665,16 +666,7 @@
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="clEventType.ctl" Type="VI" URL="../../NistPluggableModules/AcPwr/AcPwrModule/Protected/clEventType.ctl"/>
-			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../../NistPluggableModules/AcPwr/AcPwrModule/Protected/Broadcasts/ObtainBroadcastEvents.vi"/>
-			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../../NistPluggableModules/AcPwr/AcPwrModule/Protected/Broadcasts/clBroadcastEvents.ctl"/>
-			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../../NistPluggableModules/AcPwr/AcPwrModule/PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
-			<Item Name="clRequestEvents.ctl" Type="VI" URL="../../NistPluggableModules/AcPwr/AcPwrModule/Protected/Requests/clRequestEvents.ctl"/>
-			<Item Name="clStopArgument.ctl" Type="VI" URL="../../NistPluggableModules/AcPwr/AcPwrModule/PublicAPI/Arguments/Requests/clStopArgument.ctl"/>
-			<Item Name="clDidInit.ctl" Type="VI" URL="../../NistPluggableModules/AcPwr/AcPwrModule/PublicAPI/Arguments/Broadcasts/clDidInit.ctl"/>
-			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../../NistPluggableModules/AcPwr/AcPwrModule/Protected/Requests/ObtainRequestEvents.vi"/>
-			<Item Name="MeasurmentDataCluster.ctl" Type="VI" URL="../../NistPluggableModules/AcPwr/AcPwrModule/PublicAPI/MeasurmentDataCluster.ctl"/>
-			<Item Name="DatatoGraphChroma.vi" Type="VI" URL="../../NistPluggableModules/AcPwr/AcPwrModule/Test/DatatoGraphChroma.vi"/>
+			<Item Name="AcPwrShared.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrShared/AcPwrShared.lvlib"/>
 			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
