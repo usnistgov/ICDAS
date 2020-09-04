@@ -22,9 +22,9 @@
 			<Item Name="Queue.lvlib" Type="Library" URL="../Queue/Queue.lvlib"/>
 			<Item Name="Ini_lib.lvlib" Type="Library" URL="../../LV_Ini/Ini_lib.lvlib"/>
 			<Item Name="SyncModule.lvlib" Type="Library" URL="../../NistPluggableModules/Sync/SyncModule/SyncModule.lvlib"/>
+			<Item Name="Config_class.lvlib" Type="Library" URL="../../LV_Config_class/Config_class.lvlib"/>
 			<Item Name="Bus.lvclass" Type="LVClass" URL="../../NistPluggableModules/BusClass/Bus.lvclass"/>
 			<Item Name="Test.lvclass" Type="LVClass" URL="../../NistPluggableModules/TestClass/Test.lvclass"/>
-			<Item Name="Config_class.lvlib" Type="Library" URL="../../LV_Config_class/Config_class.lvlib"/>
 		</Item>
 		<Item Name="MyUserEvents" Type="Folder">
 			<Item Name="clUserEventDataType.ctl" Type="VI" URL="../UserEvents/clUserEventDataType.ctl"/>
@@ -33,23 +33,29 @@
 			<Item Name="RefreshUserEvents.vi" Type="VI" URL="../UserEvents/RefreshUserEvents.vi"/>
 			<Item Name="StopEvent.vi" Type="VI" URL="../UserEvents/StopEvent.vi"/>
 		</Item>
+		<Item Name="UserFiles" Type="Folder" URL="../../UserFiles">
+			<Property Name="NI.DISK" Type="Bool">true</Property>
+		</Item>
 		<Item Name="SGTB subVIs" Type="Folder">
 			<Item Name="LogMessage.vi" Type="VI" URL="../Framework/LogMessage.vi"/>
 			<Item Name="ExtractTypeFromFile.vi" Type="VI" URL="../ExtractTypeFromFile.vi"/>
 			<Item Name="SetRingString.vi" Type="VI" URL="../SetRingString.vi"/>
 			<Item Name="PathToINIFiles.vi" Type="VI" URL="../Framework/PathToINIFiles.vi"/>
+			<Item Name="ManipulatePathsToINI.vi" Type="VI" URL="../ManipulatePathsToINI.vi"/>
+			<Item Name="CheckFileName.vi" Type="VI" URL="../CheckFileName.vi"/>
+			<Item Name="ManageScript.vi" Type="VI" URL="../ManageScript.vi"/>
+			<Item Name="FileDialog.vi" Type="VI" URL="../FileDialog.vi"/>
 			<Item Name="GetPluginType.vi" Type="VI" URL="../GetPluginType.vi"/>
 			<Item Name="LoadPlugin.vi" Type="VI" URL="../LoadPlugin.vi"/>
 			<Item Name="ConfigDialog.vi" Type="VI" URL="../ConfigDialog.vi"/>
 			<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
-		</Item>
-		<Item Name="UserFiles" Type="Folder" URL="../../UserFiles">
-			<Property Name="NI.DISK" Type="Bool">true</Property>
+			<Item Name="DisableControls.vi" Type="VI" URL="../DisableControls.vi"/>
 		</Item>
 		<Item Name="SGTB TypeDefs" Type="Folder">
 			<Item Name="cntlRefs.ctl" Type="VI" URL="../TypeDefs/cntlRefs.ctl"/>
 			<Item Name="PluginType.ctl" Type="VI" URL="../TypeDefs/PluginType.ctl"/>
 			<Item Name="InstrumentModulesControl.ctl" Type="VI" URL="../Framework/InstrumentModulesControl.ctl"/>
+			<Item Name="HideButton.ctl" Type="VI" URL="../TypeDefs/HideButton.ctl"/>
 		</Item>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="TestCodeOut.vi" Type="VI" URL="../TestCodeOut.vi"/>
@@ -615,7 +621,7 @@
 				<Item Name="Read Lines From File (with error IO).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Lines From File (with error IO).vi"/>
 				<Item Name="Read Delimited Spreadsheet (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (I64).vi"/>
 				<Item Name="Read Delimited Spreadsheet (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (string).vi"/>
-				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>
+				<Item Name="DAQmx Disconnect Terminals.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/routing.llb/DAQmx Disconnect Terminals.vi"/>
 			</Item>
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="AcPwrModule.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
@@ -658,7 +664,6 @@
 			<Item Name="ScopeModule.lvlib" Type="Library" URL="../../NistPluggableModules/Scope/ScopeModule/ScopeModule.lvlib"/>
 			<Item Name="ScopePlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Scope/ScopePlugins/ScopePlugins.lvlib"/>
 			<Item Name="SensorModule.lvlib" Type="Library" URL="../../NistPluggableModules/Sensor/SensorModule/SensorModule.lvlib"/>
-			<Item Name="SensorPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Sensor/SensorPlugins/SensorPlugins.lvlib"/>
 			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../../NistPluggableModules/Sync/SyncPlugins/SyncPlugins.lvlib"/>
 			<Item Name="Tag-bool.lvlib" Type="Library" URL="/&lt;extravilib&gt;/ChannelInstances/Tag-bool.lvlib"/>
 			<Item Name="Visualization.lvlib" Type="Library" URL="../../NistPluggableModules/Visualization/Visualization.lvlib"/>
@@ -667,6 +672,8 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="AcPwrShared.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrShared/AcPwrShared.lvlib"/>
+			<Item Name="SensorShared.lvlib" Type="Library" URL="../../NistPluggableModules/Sensor/SensorShared/SensorShared.lvlib"/>
+			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../../NistPluggableModules/Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
 			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
