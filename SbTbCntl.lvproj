@@ -48,8 +48,11 @@
 			<Item Name="GetPluginType.vi" Type="VI" URL="../GetPluginType.vi"/>
 			<Item Name="LoadPlugin.vi" Type="VI" URL="../LoadPlugin.vi"/>
 			<Item Name="ConfigDialog.vi" Type="VI" URL="../ConfigDialog.vi"/>
+			<Item Name="StringToSSM.vi" Type="VI" URL="../StringToSSM.vi"/>
+			<Item Name="AutoHandler.vi" Type="VI" URL="../AutoHandler.vi"/>
 			<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
 			<Item Name="DisableControls.vi" Type="VI" URL="../DisableControls.vi"/>
+			<Item Name="UpdatePlugins.vi" Type="VI" URL="../UpdatePlugins.vi"/>
 		</Item>
 		<Item Name="SGTB TypeDefs" Type="Folder">
 			<Item Name="cntlRefs.ctl" Type="VI" URL="../TypeDefs/cntlRefs.ctl"/>
