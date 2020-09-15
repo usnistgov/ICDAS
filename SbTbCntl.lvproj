@@ -50,7 +50,7 @@
 			<Item Name="ConfigDialog.vi" Type="VI" URL="../ConfigDialog.vi"/>
 			<Item Name="StringToSSM.vi" Type="VI" URL="../StringToSSM.vi"/>
 			<Item Name="TestConfig.vi" Type="VI" URL="../TestConfig.vi"/>
-			<Item Name="AutoHandler.vi" Type="VI" URL="../AutoHandler.vi"/>
+			<Item Name="LogErrors.vi" Type="VI" URL="../LogErrors.vi"/>
 			<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
 			<Item Name="DisableControls.vi" Type="VI" URL="../DisableControls.vi"/>
 			<Item Name="UpdatePlugins.vi" Type="VI" URL="../UpdatePlugins.vi"/>
@@ -626,6 +626,7 @@
 				<Item Name="Read Delimited Spreadsheet (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (I64).vi"/>
 				<Item Name="Read Delimited Spreadsheet (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (string).vi"/>
 				<Item Name="DAQmx Disconnect Terminals.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/routing.llb/DAQmx Disconnect Terminals.vi"/>
+				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>
 			</Item>
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="AcPwrModule.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
