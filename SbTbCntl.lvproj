@@ -39,32 +39,33 @@
 		</Item>
 		<Item Name="SGTB subVIs" Type="Folder">
 			<Item Name="LogMessage.vi" Type="VI" URL="../Framework/LogMessage.vi"/>
-			<Item Name="ExtractTypeFromFile.vi" Type="VI" URL="../ExtractTypeFromFile.vi"/>
-			<Item Name="SetRingString.vi" Type="VI" URL="../SetRingString.vi"/>
+			<Item Name="ExtractTypeFromFile.vi" Type="VI" URL="../SubVI/ExtractTypeFromFile.vi"/>
+			<Item Name="SetRingString.vi" Type="VI" URL="../SubVI/SetRingString.vi"/>
 			<Item Name="PathToINIFiles.vi" Type="VI" URL="../Framework/PathToINIFiles.vi"/>
-			<Item Name="ManipulatePathsToINI.vi" Type="VI" URL="../ManipulatePathsToINI.vi"/>
-			<Item Name="CheckFileName.vi" Type="VI" URL="../CheckFileName.vi"/>
-			<Item Name="ManageScript.vi" Type="VI" URL="../ManageScript.vi"/>
-			<Item Name="FileDialog.vi" Type="VI" URL="../FileDialog.vi"/>
-			<Item Name="GetPluginType.vi" Type="VI" URL="../GetPluginType.vi"/>
-			<Item Name="LoadPlugin.vi" Type="VI" URL="../LoadPlugin.vi"/>
-			<Item Name="ConfigDialog.vi" Type="VI" URL="../ConfigDialog.vi"/>
-			<Item Name="StringToSSM.vi" Type="VI" URL="../StringToSSM.vi"/>
-			<Item Name="TestConfig.vi" Type="VI" URL="../TestConfig.vi"/>
-			<Item Name="LogErrors.vi" Type="VI" URL="../LogErrors.vi"/>
+			<Item Name="ManipulatePathsToINI.vi" Type="VI" URL="../SubVI/ManipulatePathsToINI.vi"/>
+			<Item Name="CheckFileName.vi" Type="VI" URL="../SubVI/CheckFileName.vi"/>
+			<Item Name="ManageScript.vi" Type="VI" URL="../SubVI/ManageScript.vi"/>
+			<Item Name="FileDialog.vi" Type="VI" URL="../SubVI/FileDialog.vi"/>
+			<Item Name="GetPluginType.vi" Type="VI" URL="../SubVI/GetPluginType.vi"/>
+			<Item Name="LoadPlugin.vi" Type="VI" URL="../SubVI/LoadPlugin.vi"/>
+			<Item Name="ConfigDialog.vi" Type="VI" URL="../SubVI/ConfigDialog.vi"/>
+			<Item Name="StringToSSM.vi" Type="VI" URL="../SubVI/StringToSSM.vi"/>
+			<Item Name="GetScriptNames.vi" Type="VI" URL="../SubVI/GetScriptNames.vi"/>
+			<Item Name="RunScript.vi" Type="VI" URL="../SubVI/RunScript.vi"/>
+			<Item Name="LogErrors.vi" Type="VI" URL="../SubVI/LogErrors.vi"/>
 			<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
-			<Item Name="DisableControls.vi" Type="VI" URL="../DisableControls.vi"/>
-			<Item Name="UpdatePlugins.vi" Type="VI" URL="../UpdatePlugins.vi"/>
+			<Item Name="DisableControls.vi" Type="VI" URL="../SubVI/DisableControls.vi"/>
+			<Item Name="UpdatePlugins.vi" Type="VI" URL="../SubVI/UpdatePlugins.vi"/>
 		</Item>
 		<Item Name="SGTB TypeDefs" Type="Folder">
 			<Item Name="cntlRefs.ctl" Type="VI" URL="../TypeDefs/cntlRefs.ctl"/>
 			<Item Name="PluginType.ctl" Type="VI" URL="../TypeDefs/PluginType.ctl"/>
 			<Item Name="InstrumentModulesControl.ctl" Type="VI" URL="../Framework/InstrumentModulesControl.ctl"/>
 			<Item Name="HideButton.ctl" Type="VI" URL="../TypeDefs/HideButton.ctl"/>
+			<Item Name="PythonOrINIScript.ctl" Type="VI" URL="../TypeDefs/PythonOrINIScript.ctl"/>
 		</Item>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="TestCodeOut.vi" Type="VI" URL="../TestCodeOut.vi"/>
-		<Item Name="PythonOrINIScript.ctl" Type="VI" URL="../TypeDefs/PythonOrINIScript.ctl"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="Agilent 3458.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 3458/Agilent 3458.lvlib"/>
