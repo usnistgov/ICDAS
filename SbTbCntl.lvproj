@@ -682,6 +682,7 @@
 			<Item Name="AcPwrShared.lvlib" Type="Library" URL="../../NistPluggableModules/AcPwr/AcPwrShared/AcPwrShared.lvlib"/>
 			<Item Name="SensorShared.lvlib" Type="Library" URL="../../NistPluggableModules/Sensor/SensorShared/SensorShared.lvlib"/>
 			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../../NistPluggableModules/Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
+			<Item Name="ScopeShared.lvlib" Type="Library" URL="../../NistPluggableModules/Scope/ScopeShared/ScopeShared.lvlib"/>
 			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
