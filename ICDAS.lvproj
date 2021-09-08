@@ -41,26 +41,8 @@
 		</Item>
 		<Item Name="SGTB subVIs" Type="Folder">
 			<Item Name="LogMessage.vi" Type="VI" URL="../Framework/LogMessage.vi"/>
-			<Item Name="ExtractTypeFromFile.vi" Type="VI" URL="../SubVI/ExtractTypeFromFile.vi"/>
-			<Item Name="SetRingString.vi" Type="VI" URL="../SubVI/SetRingString.vi"/>
 			<Item Name="PathToINIFiles.vi" Type="VI" URL="../Framework/PathToINIFiles.vi"/>
-			<Item Name="ManipulatePathsToINI.vi" Type="VI" URL="../SubVI/ManipulatePathsToINI.vi"/>
-			<Item Name="CheckFileName.vi" Type="VI" URL="../SubVI/CheckFileName.vi"/>
-			<Item Name="ManageScript.vi" Type="VI" URL="../SubVI/ManageScript.vi"/>
-			<Item Name="FileDialog.vi" Type="VI" URL="../SubVI/FileDialog.vi"/>
-			<Item Name="GetPluginType.vi" Type="VI" URL="../SubVI/GetPluginType.vi"/>
-			<Item Name="LoadPlugin.vi" Type="VI" URL="../SubVI/LoadPlugin.vi"/>
-			<Item Name="ConfigDialog.vi" Type="VI" URL="../SubVI/ConfigDialog.vi"/>
-			<Item Name="StringToSSM.vi" Type="VI" URL="../SubVI/StringToSSM.vi"/>
-			<Item Name="GetScriptNames.vi" Type="VI" URL="../SubVI/GetScriptNames.vi"/>
-			<Item Name="ViewTDMSData.vi" Type="VI" URL="../SubVI/ViewTDMSData.vi"/>
-			<Item Name="GetTestElement.vi" Type="VI" URL="../SubVI/GetTestElement.vi"/>
-			<Item Name="ArgumentManipulation.vi" Type="VI" URL="../SubVI/ArgumentManipulation.vi"/>
-			<Item Name="RunScript.vi" Type="VI" URL="../SubVI/RunScript.vi"/>
-			<Item Name="LogErrors.vi" Type="VI" URL="../SubVI/LogErrors.vi"/>
 			<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
-			<Item Name="DisableControls.vi" Type="VI" URL="../SubVI/DisableControls.vi"/>
-			<Item Name="UpdatePlugins.vi" Type="VI" URL="../SubVI/UpdatePlugins.vi"/>
 		</Item>
 		<Item Name="SGTB TypeDefs" Type="Folder">
 			<Item Name="cntlRefs.ctl" Type="VI" URL="../TypeDefs/cntlRefs.ctl"/>
@@ -68,6 +50,9 @@
 			<Item Name="InstrumentModulesControl.ctl" Type="VI" URL="../Framework/InstrumentModulesControl.ctl"/>
 			<Item Name="HideButton.ctl" Type="VI" URL="../TypeDefs/HideButton.ctl"/>
 			<Item Name="PythonOrINIScript.ctl" Type="VI" URL="../TypeDefs/PythonOrINIScript.ctl"/>
+		</Item>
+		<Item Name="SubVI" Type="Folder" URL="../SubVI">
+			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="TestCodeOut.vi" Type="VI" URL="../TestCodeOut.vi"/>
@@ -697,6 +682,17 @@
 				<Item Name="Modbus Slave.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/API/Slave/Modbus Slave.lvclass"/>
 				<Item Name="TCP Slave.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Network Protocol/Network Slave/TCP/TCP Slave.lvclass"/>
 				<Item Name="Standard Data Model.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Data Model/Standard Data Model/Standard Data Model.lvclass"/>
+				<Item Name="Get File Extension.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Get File Extension.vi"/>
+				<Item Name="Read PNG File.vi" Type="VI" URL="/&lt;vilib&gt;/picture/png.llb/Read PNG File.vi"/>
+				<Item Name="imagedata.ctl" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/imagedata.ctl"/>
+				<Item Name="Check Path.vi" Type="VI" URL="/&lt;vilib&gt;/picture/jpeg.llb/Check Path.vi"/>
+				<Item Name="Directory of Top Level VI.vi" Type="VI" URL="/&lt;vilib&gt;/picture/jpeg.llb/Directory of Top Level VI.vi"/>
+				<Item Name="Create Mask By Alpha.vi" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/Create Mask By Alpha.vi"/>
+				<Item Name="Bit-array To Byte-array.vi" Type="VI" URL="/&lt;vilib&gt;/picture/pictutil.llb/Bit-array To Byte-array.vi"/>
+				<Item Name="Delacor_lib_QMH_Message Queue.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Delacor/Delacor QMH/Libraries/Message Queue_class/Delacor_lib_QMH_Message Queue.lvclass"/>
+				<Item Name="Delacor_lib_QMH_Message Queue.ctl" Type="VI" URL="/&lt;vilib&gt;/Delacor/Delacor QMH/Libraries/Message Queue_class/Delacor_lib_QMH_Message Queue.lvclass/Delacor_lib_QMH_Message Queue.ctl"/>
+				<Item Name="Delacor_lib_QMH_Enqueue Message (poly).vi" Type="VI" URL="/&lt;vilib&gt;/Delacor/Delacor QMH/Libraries/Message Queue_class/Delacor_lib_QMH_Enqueue Message (poly).vi"/>
+				<Item Name="Delacor_lib_QMH_Enqueue Message (Single).vi" Type="VI" URL="/&lt;vilib&gt;/Delacor/Delacor QMH/Libraries/Message Queue_class/Delacor_lib_QMH_Enqueue Message (Single).vi"/>
 			</Item>
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
@@ -772,6 +768,22 @@
 			<Item Name="SNMP String to Type.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP String to Type.vi"/>
 			<Item Name="SNMP String to Smallest Int Array.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP String to Smallest Int Array.vi"/>
 			<Item Name="SNMP ASCII Hex String To Binary String.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP ASCII Hex String To Binary String.vi"/>
+			<Item Name="Tree Item Type.ctl" Type="VI" URL="../SubVI/TypeDefs/Tree Item Type.ctl"/>
+			<Item Name="Create Test Manager Tree Tag.vi" Type="VI" URL="../SubVI/Tree/Create Test Manager Tree Tag.vi"/>
+			<Item Name="Test Manager.lvlib" Type="Library" URL="../Test Manager.lvlib"/>
+			<Item Name="Module Data--cluster.ctl" Type="VI" URL="../Module Data--cluster.ctl"/>
+			<Item Name="Comparator Intrument Configuration.ctl" Type="VI" URL="../SubVI/TypeDefs/Comparator Intrument Configuration.ctl"/>
+			<Item Name="Generic.lvclass" Type="LVClass" URL="../../Mass Cal Measurement Progs/Instrument IO/Cloneable Comparator Drivers/Comparator Classes/Generic/Generic.lvclass"/>
+			<Item Name="Instrument Connection Info.ctl" Type="VI" URL="../SubVI/TypeDefs/Instrument Connection Info.ctl"/>
+			<Item Name="Request Events--cluster.ctl" Type="VI" URL="../Request Events--cluster.ctl"/>
+			<Item Name="Stop Argument--cluster.ctl" Type="VI" URL="../Stop Argument--cluster.ctl"/>
+			<Item Name="Show Panel Argument--cluster.ctl" Type="VI" URL="../Show Panel Argument--cluster.ctl"/>
+			<Item Name="Hide Panel Argument--cluster.ctl" Type="VI" URL="../Hide Panel Argument--cluster.ctl"/>
+			<Item Name="Get Module Execution Status Argument--cluster.ctl" Type="VI" URL="../Get Module Execution Status Argument--cluster.ctl"/>
+			<Item Name="Show Diagram Argument--cluster.ctl" Type="VI" URL="../Show Diagram Argument--cluster.ctl"/>
+			<Item Name="Register for Instrument Modules Argument--cluster.ctl" Type="VI" URL="../Register for Instrument Modules Argument--cluster.ctl"/>
+			<Item Name="Get Instrument Configuration From Tree.vi" Type="VI" URL="../SubVI/Get Instrument Configuration From Tree.vi"/>
+			<Item Name="Decode Test Manager Tree Tag.vi" Type="VI" URL="../SubVI/Tree/Decode Test Manager Tree Tag.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
