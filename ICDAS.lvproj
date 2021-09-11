@@ -689,10 +689,7 @@
 				<Item Name="Directory of Top Level VI.vi" Type="VI" URL="/&lt;vilib&gt;/picture/jpeg.llb/Directory of Top Level VI.vi"/>
 				<Item Name="Create Mask By Alpha.vi" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/Create Mask By Alpha.vi"/>
 				<Item Name="Bit-array To Byte-array.vi" Type="VI" URL="/&lt;vilib&gt;/picture/pictutil.llb/Bit-array To Byte-array.vi"/>
-				<Item Name="Delacor_lib_QMH_Message Queue.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Delacor/Delacor QMH/Libraries/Message Queue_class/Delacor_lib_QMH_Message Queue.lvclass"/>
-				<Item Name="Delacor_lib_QMH_Message Queue.ctl" Type="VI" URL="/&lt;vilib&gt;/Delacor/Delacor QMH/Libraries/Message Queue_class/Delacor_lib_QMH_Message Queue.lvclass/Delacor_lib_QMH_Message Queue.ctl"/>
-				<Item Name="Delacor_lib_QMH_Enqueue Message (poly).vi" Type="VI" URL="/&lt;vilib&gt;/Delacor/Delacor QMH/Libraries/Message Queue_class/Delacor_lib_QMH_Enqueue Message (poly).vi"/>
-				<Item Name="Delacor_lib_QMH_Enqueue Message (Single).vi" Type="VI" URL="/&lt;vilib&gt;/Delacor/Delacor QMH/Libraries/Message Queue_class/Delacor_lib_QMH_Enqueue Message (Single).vi"/>
+				<Item Name="High Resolution Polling Wait.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/High Resolution Polling Wait.vi"/>
 			</Item>
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
@@ -768,22 +765,7 @@
 			<Item Name="SNMP String to Type.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP String to Type.vi"/>
 			<Item Name="SNMP String to Smallest Int Array.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP String to Smallest Int Array.vi"/>
 			<Item Name="SNMP ASCII Hex String To Binary String.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP ASCII Hex String To Binary String.vi"/>
-			<Item Name="Tree Item Type.ctl" Type="VI" URL="../SubVI/TypeDefs/Tree Item Type.ctl"/>
-			<Item Name="Create Test Manager Tree Tag.vi" Type="VI" URL="../SubVI/Tree/Create Test Manager Tree Tag.vi"/>
-			<Item Name="Test Manager.lvlib" Type="Library" URL="../Test Manager.lvlib"/>
-			<Item Name="Module Data--cluster.ctl" Type="VI" URL="../Module Data--cluster.ctl"/>
-			<Item Name="Comparator Intrument Configuration.ctl" Type="VI" URL="../SubVI/TypeDefs/Comparator Intrument Configuration.ctl"/>
-			<Item Name="Generic.lvclass" Type="LVClass" URL="../../Mass Cal Measurement Progs/Instrument IO/Cloneable Comparator Drivers/Comparator Classes/Generic/Generic.lvclass"/>
-			<Item Name="Instrument Connection Info.ctl" Type="VI" URL="../SubVI/TypeDefs/Instrument Connection Info.ctl"/>
-			<Item Name="Request Events--cluster.ctl" Type="VI" URL="../Request Events--cluster.ctl"/>
-			<Item Name="Stop Argument--cluster.ctl" Type="VI" URL="../Stop Argument--cluster.ctl"/>
-			<Item Name="Show Panel Argument--cluster.ctl" Type="VI" URL="../Show Panel Argument--cluster.ctl"/>
-			<Item Name="Hide Panel Argument--cluster.ctl" Type="VI" URL="../Hide Panel Argument--cluster.ctl"/>
-			<Item Name="Get Module Execution Status Argument--cluster.ctl" Type="VI" URL="../Get Module Execution Status Argument--cluster.ctl"/>
-			<Item Name="Show Diagram Argument--cluster.ctl" Type="VI" URL="../Show Diagram Argument--cluster.ctl"/>
-			<Item Name="Register for Instrument Modules Argument--cluster.ctl" Type="VI" URL="../Register for Instrument Modules Argument--cluster.ctl"/>
-			<Item Name="Get Instrument Configuration From Tree.vi" Type="VI" URL="../SubVI/Get Instrument Configuration From Tree.vi"/>
-			<Item Name="Decode Test Manager Tree Tag.vi" Type="VI" URL="../SubVI/Tree/Decode Test Manager Tree Tag.vi"/>
+			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
