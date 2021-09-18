@@ -36,9 +36,7 @@
 			<Item Name="RefreshUserEvents.vi" Type="VI" URL="../UserEvents/RefreshUserEvents.vi"/>
 			<Item Name="StopEvent.vi" Type="VI" URL="../UserEvents/StopEvent.vi"/>
 		</Item>
-		<Item Name="UserFiles" Type="Folder" URL="../../UserFiles">
-			<Property Name="NI.DISK" Type="Bool">true</Property>
-		</Item>
+		<Item Name="UserFiles" Type="Folder"/>
 		<Item Name="SGTB subVIs" Type="Folder">
 			<Item Name="LogMessage.vi" Type="VI" URL="../Framework/LogMessage.vi"/>
 			<Item Name="PathToINIFiles.vi" Type="VI" URL="../Framework/PathToINIFiles.vi"/>
@@ -723,7 +721,6 @@
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="NHRDCPowerModule.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
 			<Item Name="SensorShared.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorShared/SensorShared.lvlib"/>
 			<Item Name="nisync.dll" Type="Document" URL="nisync.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
@@ -786,6 +783,7 @@
 			<Item Name="SNMP String to Smallest Int Array.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP String to Smallest Int Array.vi"/>
 			<Item Name="SNMP ASCII Hex String To Binary String.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP ASCII Hex String To Binary String.vi"/>
 			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
