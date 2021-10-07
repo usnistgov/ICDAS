@@ -45,4 +45,6 @@
 	<Item Name="Enqueue Message.vi" Type="VI" URL="../Enqueue Message.vi"/>
 	<Item Name="Dequeue Message.vi" Type="VI" URL="../Dequeue Message.vi"/>
 	<Item Name="Handle Error.vi" Type="VI" URL="../Handle Error.vi"/>
+	<Item Name="Enqueue Defer Panel Updates Message.vi" Type="VI" URL="../Enqueue Defer Panel Updates Message.vi"/>
+	<Item Name="Enqueue Update Panel Message.vi" Type="VI" URL="../Enqueue Update Panel Message.vi"/>
 </Library>
