@@ -8,7 +8,7 @@ lta = Lta("127.0.0.1",60100)    # all scripts must create  an Lta object
 try:
     lta.connect()                   # connect to the Labview Host
 #---------------------Script code goes here------------------------------------
-    SensorCfg=lta.__get__('Sensor.RoomAlert0,Meas')
+    SensorCfg=lta.__get__('Sensor.RoomAlert12E-MAC-4125,Meas')
     print SensorCfg
     
 #------------------all scripts should send their errors to labview------------
