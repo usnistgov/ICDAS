@@ -15,18 +15,32 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Documentation" Type="Folder"/>
-		<Item Name="LV_TestAutomation" Type="Folder"/>
+		<Item Name="LV_TestAutomation" Type="Folder">
+			<Item Name="LV-PY.lvlib" Type="Library" URL="../LV_TestAutomation/LV-PY_Lib/LV-PY.lvlib"/>
+		</Item>
 		<Item Name="Modules" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
+			<Item Name="Test.lvclass" Type="LVClass" URL="../NistPluggableModules/TestClass/Test.lvclass"/>
+			<Item Name="Bus.lvclass" Type="LVClass" URL="../NistPluggableModules/BusClass/Bus.lvclass"/>
+			<Item Name="Queue.lvlib" Type="Library" URL="../Queue/Queue.lvlib"/>
 			<Item Name="SensorModule.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorModule/SensorModule.lvlib"/>
 			<Item Name="SensorPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorPlugins/SensorPlugins.lvlib"/>
+			<Item Name="SensorShared.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorShared/SensorShared.lvlib"/>
 			<Item Name="AcPwrModule.lvlib" Type="Library" URL="../NistPluggableModules/AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
 			<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/AcPwrPlugins.lvlib"/>
-			<Item Name="Queue.lvlib" Type="Library" URL="../Queue/Queue.lvlib"/>
-			<Item Name="SyncModule.lvlib" Type="Library" URL="../NistPluggableModules/Sync/SyncModule/SyncModule.lvlib"/>
-			<Item Name="Bus.lvclass" Type="LVClass" URL="../NistPluggableModules/BusClass/Bus.lvclass"/>
-			<Item Name="Test.lvclass" Type="LVClass" URL="../NistPluggableModules/TestClass/Test.lvclass"/>
 			<Item Name="AcPwrShared.lvlib" Type="Library" URL="../NistPluggableModules/AcPwr/AcPwrShared/AcPwrShared.lvlib"/>
+			<Item Name="SyncModule.lvlib" Type="Library" URL="../NistPluggableModules/Sync/SyncModule/SyncModule.lvlib"/>
+			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Sync/SyncPlugins/SyncPlugins.lvlib"/>
+			<Item Name="FgenModule.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenModule/FgenModule.lvlib"/>
+			<Item Name="FgenPlugins.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenPlugins/FgenPlugins.lvlib"/>
+			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
+			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
+			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
+			<Item Name="ScopeShared.lvlib" Type="Library" URL="../NistPluggableModules/Scope/ScopeShared/ScopeShared.lvlib"/>
+			<Item Name="ScopeModule.lvlib" Type="Library" URL="../NistPluggableModules/Scope/ScopeModule/ScopeModule.lvlib"/>
+			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisModule/AnalysisModule.lvlib"/>
+			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
+			<Item Name="Functions.lvlib" Type="Library" URL="../NistPluggableModules/FGen/MemberClasses/Functions.lvlib"/>
 			<Item Name="Visualization.lvlib" Type="Library" URL="../NistPluggableModules/Visualization/Visualization.lvlib"/>
 		</Item>
 		<Item Name="MyUserEvents" Type="Folder">
@@ -36,31 +50,11 @@
 			<Item Name="RefreshUserEvents.vi" Type="VI" URL="../UserEvents/RefreshUserEvents.vi"/>
 			<Item Name="StopEvent.vi" Type="VI" URL="../UserEvents/StopEvent.vi"/>
 		</Item>
-		<Item Name="UserFiles" Type="Folder" URL="../../UserFiles">
-			<Property Name="NI.DISK" Type="Bool">true</Property>
-		</Item>
+		<Item Name="UserFiles" Type="Folder"/>
 		<Item Name="SGTB subVIs" Type="Folder">
 			<Item Name="LogMessage.vi" Type="VI" URL="../Framework/LogMessage.vi"/>
-			<Item Name="ExtractTypeFromFile.vi" Type="VI" URL="../SubVI/ExtractTypeFromFile.vi"/>
-			<Item Name="SetRingString.vi" Type="VI" URL="../SubVI/SetRingString.vi"/>
 			<Item Name="PathToINIFiles.vi" Type="VI" URL="../Framework/PathToINIFiles.vi"/>
-			<Item Name="ManipulatePathsToINI.vi" Type="VI" URL="../SubVI/ManipulatePathsToINI.vi"/>
-			<Item Name="CheckFileName.vi" Type="VI" URL="../SubVI/CheckFileName.vi"/>
-			<Item Name="ManageScript.vi" Type="VI" URL="../SubVI/ManageScript.vi"/>
-			<Item Name="FileDialog.vi" Type="VI" URL="../SubVI/FileDialog.vi"/>
-			<Item Name="GetPluginType.vi" Type="VI" URL="../SubVI/GetPluginType.vi"/>
-			<Item Name="LoadPlugin.vi" Type="VI" URL="../SubVI/LoadPlugin.vi"/>
-			<Item Name="ConfigDialog.vi" Type="VI" URL="../SubVI/ConfigDialog.vi"/>
-			<Item Name="StringToSSM.vi" Type="VI" URL="../SubVI/StringToSSM.vi"/>
-			<Item Name="GetScriptNames.vi" Type="VI" URL="../SubVI/GetScriptNames.vi"/>
-			<Item Name="ViewTDMSData.vi" Type="VI" URL="../SubVI/ViewTDMSData.vi"/>
-			<Item Name="GetTestElement.vi" Type="VI" URL="../SubVI/GetTestElement.vi"/>
-			<Item Name="ArgumentManipulation.vi" Type="VI" URL="../SubVI/ArgumentManipulation.vi"/>
-			<Item Name="RunScript.vi" Type="VI" URL="../SubVI/RunScript.vi"/>
-			<Item Name="LogErrors.vi" Type="VI" URL="../SubVI/LogErrors.vi"/>
 			<Item Name="cntlRefs.vi" Type="VI" URL="../Framework/cntlRefs.vi"/>
-			<Item Name="DisableControls.vi" Type="VI" URL="../SubVI/DisableControls.vi"/>
-			<Item Name="UpdatePlugins.vi" Type="VI" URL="../SubVI/UpdatePlugins.vi"/>
 		</Item>
 		<Item Name="SGTB TypeDefs" Type="Folder">
 			<Item Name="cntlRefs.ctl" Type="VI" URL="../TypeDefs/cntlRefs.ctl"/>
@@ -68,6 +62,9 @@
 			<Item Name="InstrumentModulesControl.ctl" Type="VI" URL="../Framework/InstrumentModulesControl.ctl"/>
 			<Item Name="HideButton.ctl" Type="VI" URL="../TypeDefs/HideButton.ctl"/>
 			<Item Name="PythonOrINIScript.ctl" Type="VI" URL="../TypeDefs/PythonOrINIScript.ctl"/>
+		</Item>
+		<Item Name="SubVI" Type="Folder" URL="../SubVI">
+			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="TestCodeOut.vi" Type="VI" URL="../TestCodeOut.vi"/>
@@ -697,35 +694,43 @@
 				<Item Name="Modbus Slave.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/API/Slave/Modbus Slave.lvclass"/>
 				<Item Name="TCP Slave.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Network Protocol/Network Slave/TCP/TCP Slave.lvclass"/>
 				<Item Name="Standard Data Model.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Data Model/Standard Data Model/Standard Data Model.lvclass"/>
+				<Item Name="Get File Extension.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Get File Extension.vi"/>
+				<Item Name="Read PNG File.vi" Type="VI" URL="/&lt;vilib&gt;/picture/png.llb/Read PNG File.vi"/>
+				<Item Name="imagedata.ctl" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/imagedata.ctl"/>
+				<Item Name="Check Path.vi" Type="VI" URL="/&lt;vilib&gt;/picture/jpeg.llb/Check Path.vi"/>
+				<Item Name="Directory of Top Level VI.vi" Type="VI" URL="/&lt;vilib&gt;/picture/jpeg.llb/Directory of Top Level VI.vi"/>
+				<Item Name="Create Mask By Alpha.vi" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/Create Mask By Alpha.vi"/>
+				<Item Name="Bit-array To Byte-array.vi" Type="VI" URL="/&lt;vilib&gt;/picture/pictutil.llb/Bit-array To Byte-array.vi"/>
+				<Item Name="High Resolution Polling Wait.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/High Resolution Polling Wait.vi"/>
+				<Item Name="LVRowAndColumnTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVRowAndColumnTypeDef.ctl"/>
+				<Item Name="Initialize Mouse.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/Initialize Mouse.vi"/>
+				<Item Name="errorList.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/errorList.vi"/>
+				<Item Name="ErrorDescriptions.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/ErrorDescriptions.vi"/>
+				<Item Name="Close Input Device.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/Close Input Device.vi"/>
+				<Item Name="closeJoystick.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/closeJoystick.vi"/>
+				<Item Name="closeKeyboard.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/closeKeyboard.vi"/>
+				<Item Name="closeMouse.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/inputDevices.llb/closeMouse.vi"/>
 			</Item>
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
 			<Item Name="ChannelProbeWindowStagger.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbeWindowStagger.vi"/>
 			<Item Name="Tag-bool.lvlib" Type="Library" URL="/&lt;extravilib&gt;/ChannelInstances/Tag-bool.lvlib"/>
 			<Item Name="Comms.lvlib" Type="Library" URL="../LV_TestAutomation/Comms_lib/Comms.lvlib"/>
-			<Item Name="LV-PY.lvlib" Type="Library" URL="../LV_TestAutomation/LV-PY_Lib/LV-PY.lvlib"/>
 			<Item Name="IviACPwr_ni.dll" Type="Document" URL="IviACPwr_ni.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="NHRDCPowerModule.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
-			<Item Name="SensorShared.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorShared/SensorShared.lvlib"/>
 			<Item Name="nisync.dll" Type="Document" URL="nisync.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Sync/SyncPlugins/SyncPlugins.lvlib"/>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
-			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
-			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="Functions.lvlib" Type="Library" URL="../NistPluggableModules/FGen/MemberClasses/Functions.lvlib"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="IviDigitizer_ni.dll" Type="Document" URL="IviDigitizer_ni.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
@@ -733,15 +738,9 @@
 			<Item Name="ivi.dll" Type="Document" URL="ivi.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="FgenModule.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenModule/FgenModule.lvlib"/>
-			<Item Name="FgenPlugins.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenPlugins/FgenPlugins.lvlib"/>
 			<Item Name="IviFgen.dll" Type="Document" URL="IviFgen.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisModule/AnalysisModule.lvlib"/>
-			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
-			<Item Name="ScopeShared.lvlib" Type="Library" URL="../NistPluggableModules/Scope/ScopeShared/ScopeShared.lvlib"/>
-			<Item Name="ScopeModule.lvlib" Type="Library" URL="../NistPluggableModules/Scope/ScopeModule/ScopeModule.lvlib"/>
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -772,6 +771,10 @@
 			<Item Name="SNMP String to Type.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP String to Type.vi"/>
 			<Item Name="SNMP String to Smallest Int Array.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP String to Smallest Int Array.vi"/>
 			<Item Name="SNMP ASCII Hex String To Binary String.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP ASCII Hex String To Binary String.vi"/>
+			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
+			<Item Name="lvinput.dll" Type="Document" URL="/&lt;resource&gt;/lvinput.dll"/>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
