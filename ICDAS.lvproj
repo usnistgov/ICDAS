@@ -18,15 +18,23 @@
 		<Item Name="LV_TestAutomation" Type="Folder"/>
 		<Item Name="Modules" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
+			<Item Name="Test.lvclass" Type="LVClass" URL="../NistPluggableModules/TestClass/Test.lvclass"/>
+			<Item Name="Bus.lvclass" Type="LVClass" URL="../NistPluggableModules/BusClass/Bus.lvclass"/>
+			<Item Name="Queue.lvlib" Type="Library" URL="../Queue/Queue.lvlib"/>
 			<Item Name="SensorModule.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorModule/SensorModule.lvlib"/>
 			<Item Name="SensorPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorPlugins/SensorPlugins.lvlib"/>
 			<Item Name="AcPwrModule.lvlib" Type="Library" URL="../NistPluggableModules/AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
 			<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/AcPwrPlugins.lvlib"/>
-			<Item Name="Queue.lvlib" Type="Library" URL="../Queue/Queue.lvlib"/>
-			<Item Name="SyncModule.lvlib" Type="Library" URL="../NistPluggableModules/Sync/SyncModule/SyncModule.lvlib"/>
-			<Item Name="Bus.lvclass" Type="LVClass" URL="../NistPluggableModules/BusClass/Bus.lvclass"/>
-			<Item Name="Test.lvclass" Type="LVClass" URL="../NistPluggableModules/TestClass/Test.lvclass"/>
 			<Item Name="AcPwrShared.lvlib" Type="Library" URL="../NistPluggableModules/AcPwr/AcPwrShared/AcPwrShared.lvlib"/>
+			<Item Name="SyncModule.lvlib" Type="Library" URL="../NistPluggableModules/Sync/SyncModule/SyncModule.lvlib"/>
+			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Sync/SyncPlugins/SyncPlugins.lvlib"/>
+			<Item Name="FgenModule.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenModule/FgenModule.lvlib"/>
+			<Item Name="FgenPlugins.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenPlugins/FgenPlugins.lvlib"/>
+			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
+			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
+			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
+			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisModule/AnalysisModule.lvlib"/>
+			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
 			<Item Name="Visualization.lvlib" Type="Library" URL="../NistPluggableModules/Visualization/Visualization.lvlib"/>
 		</Item>
 		<Item Name="MyUserEvents" Type="Folder">
@@ -713,13 +721,9 @@
 			<Item Name="nisync.dll" Type="Document" URL="nisync.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Sync/SyncPlugins/SyncPlugins.lvlib"/>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
-			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
-			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -731,13 +735,9 @@
 			<Item Name="ivi.dll" Type="Document" URL="ivi.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="FgenModule.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenModule/FgenModule.lvlib"/>
-			<Item Name="FgenPlugins.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenPlugins/FgenPlugins.lvlib"/>
 			<Item Name="IviFgen.dll" Type="Document" URL="IviFgen.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisModule/AnalysisModule.lvlib"/>
-			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
 			<Item Name="ScopeShared.lvlib" Type="Library" URL="../NistPluggableModules/Scope/ScopeShared/ScopeShared.lvlib"/>
 			<Item Name="ScopeModule.lvlib" Type="Library" URL="../NistPluggableModules/Scope/ScopeModule/ScopeModule.lvlib"/>
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
@@ -772,7 +772,7 @@
 			<Item Name="SNMP ASCII Hex String To Binary String.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP ASCII Hex String To Binary String.vi"/>
 			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
 			<Item Name="lvinput.dll" Type="Document" URL="/&lt;resource&gt;/lvinput.dll"/>
-			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
