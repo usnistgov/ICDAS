@@ -15,7 +15,9 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Documentation" Type="Folder"/>
-		<Item Name="LV_TestAutomation" Type="Folder"/>
+		<Item Name="LV_TestAutomation" Type="Folder">
+			<Item Name="LV-PY.lvlib" Type="Library" URL="../LV_TestAutomation/LV-PY_Lib/LV-PY.lvlib"/>
+		</Item>
 		<Item Name="Modules" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
 			<Item Name="Test.lvclass" Type="LVClass" URL="../NistPluggableModules/TestClass/Test.lvclass"/>
@@ -23,6 +25,7 @@
 			<Item Name="Queue.lvlib" Type="Library" URL="../Queue/Queue.lvlib"/>
 			<Item Name="SensorModule.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorModule/SensorModule.lvlib"/>
 			<Item Name="SensorPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorPlugins/SensorPlugins.lvlib"/>
+			<Item Name="SensorShared.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorShared/SensorShared.lvlib"/>
 			<Item Name="AcPwrModule.lvlib" Type="Library" URL="../NistPluggableModules/AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
 			<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/AcPwrPlugins.lvlib"/>
 			<Item Name="AcPwrShared.lvlib" Type="Library" URL="../NistPluggableModules/AcPwr/AcPwrShared/AcPwrShared.lvlib"/>
@@ -33,8 +36,11 @@
 			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
 			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
 			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
+			<Item Name="ScopeShared.lvlib" Type="Library" URL="../NistPluggableModules/Scope/ScopeShared/ScopeShared.lvlib"/>
+			<Item Name="ScopeModule.lvlib" Type="Library" URL="../NistPluggableModules/Scope/ScopeModule/ScopeModule.lvlib"/>
 			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisModule/AnalysisModule.lvlib"/>
 			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
+			<Item Name="Functions.lvlib" Type="Library" URL="../NistPluggableModules/FGen/MemberClasses/Functions.lvlib"/>
 			<Item Name="Visualization.lvlib" Type="Library" URL="../NistPluggableModules/Visualization/Visualization.lvlib"/>
 		</Item>
 		<Item Name="MyUserEvents" Type="Folder">
@@ -710,14 +716,12 @@
 			<Item Name="ChannelProbeWindowStagger.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbeWindowStagger.vi"/>
 			<Item Name="Tag-bool.lvlib" Type="Library" URL="/&lt;extravilib&gt;/ChannelInstances/Tag-bool.lvlib"/>
 			<Item Name="Comms.lvlib" Type="Library" URL="../LV_TestAutomation/Comms_lib/Comms.lvlib"/>
-			<Item Name="LV-PY.lvlib" Type="Library" URL="../LV_TestAutomation/LV-PY_Lib/LV-PY.lvlib"/>
 			<Item Name="IviACPwr_ni.dll" Type="Document" URL="IviACPwr_ni.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="NHRDCPowerModule.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="SensorShared.lvlib" Type="Library" URL="../NistPluggableModules/Sensor/SensorShared/SensorShared.lvlib"/>
 			<Item Name="nisync.dll" Type="Document" URL="nisync.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -727,7 +731,6 @@
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="Functions.lvlib" Type="Library" URL="../NistPluggableModules/FGen/MemberClasses/Functions.lvlib"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="IviDigitizer_ni.dll" Type="Document" URL="IviDigitizer_ni.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
@@ -738,8 +741,6 @@
 			<Item Name="IviFgen.dll" Type="Document" URL="IviFgen.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="ScopeShared.lvlib" Type="Library" URL="../NistPluggableModules/Scope/ScopeShared/ScopeShared.lvlib"/>
-			<Item Name="ScopeModule.lvlib" Type="Library" URL="../NistPluggableModules/Scope/ScopeModule/ScopeModule.lvlib"/>
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
