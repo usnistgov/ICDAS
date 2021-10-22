@@ -147,8 +147,6 @@
 				<Item Name="Fetch Extended Background Measurements.vi" Type="VI" URL="/&lt;instrlib&gt;/NH Research 9400 Series/Public/Data/Fetch Extended Background Measurements.vi"/>
 				<Item Name="PPS_UPC Config Output FREQuency Parameters.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Config Output FREQuency Parameters.vi"/>
 				<Item Name="chr62000P Abort.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Abort.vi"/>
-				<Item Name="chr62000P_32.dll" Type="Document" URL="/&lt;instrlib&gt;/chr62000P/chr62000P_32.dll"/>
-				<Item Name="chr62000P IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P IVI Error Converter.vi"/>
 				<Item Name="chr62000P Set Output.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Output.vi"/>
 				<Item Name="chr62000P Close.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Close.vi"/>
 				<Item Name="chr62000P Set Current Limit.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current Limit.vi"/>
@@ -773,8 +771,7 @@
 			<Item Name="SNMP ASCII Hex String To Binary String.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP ASCII Hex String To Binary String.vi"/>
 			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
 			<Item Name="lvinput.dll" Type="Document" URL="/&lt;resource&gt;/lvinput.dll"/>
-			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
-			<Item Name="matscript.dll" Type="Document"/>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../Program Files/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
