@@ -33,6 +33,7 @@
 			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Sync/SyncPlugins/SyncPlugins.lvlib"/>
 			<Item Name="FgenModule.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenModule/FgenModule.lvlib"/>
 			<Item Name="FgenPlugins.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenPlugins/FgenPlugins.lvlib"/>
+			<Item Name="FgenShared.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenShared/FgenShared.lvlib"/>
 			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
 			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
 			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../NistPluggableModules/Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
@@ -774,9 +775,6 @@
 			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
 			<Item Name="lvinput.dll" Type="Document" URL="/&lt;resource&gt;/lvinput.dll"/>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
-			<Item Name="FgenShared.lvlib" Type="Library" URL="../NistPluggableModules/FGen/FgenShared/FgenShared.lvlib"/>
-			<Item Name="ErrorHandler.vi" Type="VI" URL="../NistPluggableModules/FGen/FgenPlugins/Shared/ErrorHandler.vi"/>
-			<Item Name="Main.vi" Type="VI" URL="../NistPluggableModules/FGen/FgenModule/Main.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
