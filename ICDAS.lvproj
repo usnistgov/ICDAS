@@ -194,8 +194,6 @@
 				<Item Name="niSync Create Future Time Event.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Create Future Time Event.vi"/>
 				<Item Name="niSync Send Software Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Send Software Trigger.vi"/>
 				<Item Name="Agilent 3458.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 3458/Agilent 3458.lvlib"/>
-				<Item Name="chr62000P_32.dll" Type="Document" URL="/&lt;instrlib&gt;/chr62000P/chr62000P_32.dll"/>
-				<Item Name="chr62000P IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P IVI Error Converter.vi"/>
 			</Item>
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
@@ -253,7 +251,6 @@
 				<Item Name="Write Key (Variant)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Write Key (Variant)__ogtk.vi"/>
 				<Item Name="Write Section Cluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Write Section Cluster__ogtk.vi"/>
 				<Item Name="Socket.lvlib" Type="Library" URL="/&lt;userlib&gt;/NIST/Socket Class/Classes/Socket.lvlib"/>
-				<Item Name="Current VIs Reference__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/appcontrol/appcontrol.llb/Current VIs Reference__ogtk.vi"/>
 			</Item>
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="8.6CompatibleGlobalVar.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/config.llb/8.6CompatibleGlobalVar.vi"/>
@@ -781,7 +778,7 @@
 			<Item Name="SNMP ASCII Hex String To Binary String.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP ASCII Hex String To Binary String.vi"/>
 			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
 			<Item Name="lvinput.dll" Type="Document" URL="/&lt;resource&gt;/lvinput.dll"/>
-			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../Program Files/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
