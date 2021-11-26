@@ -73,6 +73,7 @@
 		<Item Name="Ini_lib.lvlib" Type="Library" URL="../LV_Ini/Ini_lib.lvlib"/>
 		<Item Name="Config_class.lvlib" Type="Library" URL="../LV_Config_class/Config_class.lvlib"/>
 		<Item Name="ICDAS_Main.vi" Type="VI" URL="../ICDAS_Main.vi"/>
+		<Item Name="TestChromaPS.vi" Type="VI" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/ChromaPowerSupply/TestChromaPS.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="C63800 IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 IVI Error Converter.vi"/>
@@ -197,6 +198,67 @@
 				<Item Name="Agilent 3458.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 3458/Agilent 3458.lvlib"/>
 				<Item Name="chr62000P_32.dll" Type="Document" URL="/&lt;instrlib&gt;/chr62000P/chr62000P_32.dll"/>
 				<Item Name="chr62000P IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P IVI Error Converter.vi"/>
+				<Item Name="chr62000P Read Instrument Data.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Read Instrument Data.vi"/>
+				<Item Name="chr62000P Write Instrument Data.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Write Instrument Data.vi"/>
+				<Item Name="chr62000P Get Next Coercion Record.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Get Next Coercion Record.vi"/>
+				<Item Name="chr62000P Error Message.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Error Message.vi"/>
+				<Item Name="chr62000P Error-Query.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Error-Query.vi"/>
+				<Item Name="chr62000P Revision Query.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Revision Query.vi"/>
+				<Item Name="chr62000P Self-Test.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Self-Test.vi"/>
+				<Item Name="chr62000P Reset.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Reset.vi"/>
+				<Item Name="chr62000P  OPC  , Query Operation Complete.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P  OPC  , Query Operation Complete.vi"/>
+				<Item Name="chr62000P  STB  , Read Status Byte.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P  STB  , Read Status Byte.vi"/>
+				<Item Name="chr62000P  ESR  , Std. Eve. Status Reg..vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P  ESR  , Std. Eve. Status Reg..vi"/>
+				<Item Name="chr62000P Query Program Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Program Mode.vi"/>
+				<Item Name="chr62000P Query Remote Inhibit.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Remote Inhibit.vi"/>
+				<Item Name="chr62000P Query Backlight.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Backlight.vi"/>
+				<Item Name="chr62000P Query Master Enable State.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Master Enable State.vi"/>
+				<Item Name="chr62000P Query Master Parameter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Master Parameter.vi"/>
+				<Item Name="chr62000P Query Master Slave ID.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Master Slave ID.vi"/>
+				<Item Name="chr62000P Query Program Running State.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Program Running State.vi"/>
+				<Item Name="chr62000P Query Program Parameter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Program Parameter.vi"/>
+				<Item Name="chr62000P Query APG Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query APG Mode.vi"/>
+				<Item Name="chr62000P Query Foldback Protect.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Foldback Protect.vi"/>
+				<Item Name="chr62000P Query Output.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Output.vi"/>
+				<Item Name="chr62000P Query Beeper.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Query Beeper.vi"/>
+				<Item Name="chr62000P Fetch Status.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Fetch Status.vi"/>
+				<Item Name="chr62000P  OPC, Operation Complete.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P  OPC, Operation Complete.vi"/>
+				<Item Name="chr62000P  RCL, Recall.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P  RCL, Recall.vi"/>
+				<Item Name="chr62000P  SAV, Save.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P  SAV, Save.vi"/>
+				<Item Name="chr62000P  SRE, Service Request Enable.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P  SRE, Service Request Enable.vi"/>
+				<Item Name="chr62000P  ESE, Std. Event Status Enable.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P  ESE, Std. Event Status Enable.vi"/>
+				<Item Name="chr62000P  CLS, Clear Status.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P  CLS, Clear Status.vi"/>
+				<Item Name="chr62000P Master Enable.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Master Enable.vi"/>
+				<Item Name="chr62000P Set Master Parameter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Master Parameter.vi"/>
+				<Item Name="chr62000P Set Master Slave ID.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Master Slave ID.vi"/>
+				<Item Name="chr62000P Set CP Tracking Parameter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set CP Tracking Parameter.vi"/>
+				<Item Name="chr62000P Set Step Parameter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Step Parameter.vi"/>
+				<Item Name="chr62000P Program Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Program Mode.vi"/>
+				<Item Name="chr62000P Save Program.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Save Program.vi"/>
+				<Item Name="chr62000P Run.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Run.vi"/>
+				<Item Name="chr62000P Set Sequence Parameter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Sequence Parameter.vi"/>
+				<Item Name="chr62000P Program Sequence Add.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Program Sequence Add.vi"/>
+				<Item Name="chr62000P Program Select.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Program Select.vi"/>
+				<Item Name="chr62000P Set Remote Inhibit.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Remote Inhibit.vi"/>
+				<Item Name="chr62000P Set Average Method.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Average Method.vi"/>
+				<Item Name="chr62000P Set Average Times.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Average Times.vi"/>
+				<Item Name="chr62000P Set Meas Speed.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Meas Speed.vi"/>
+				<Item Name="chr62000P Set Backlight.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Backlight.vi"/>
+				<Item Name="chr62000P Set APG Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set APG Mode.vi"/>
+				<Item Name="chr62000P Set Foldback Protect.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Foldback Protect.vi"/>
+				<Item Name="chr62000P Set Remote Mode(RS232C Only).vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Remote Mode(RS232C Only).vi"/>
+				<Item Name="chr62000P Set Beeper.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Beeper.vi"/>
+				<Item Name="chr62000P Set TTL Port.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set TTL Port.vi"/>
+				<Item Name="chr62000P Set DC  ON Voltage.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set DC  ON Voltage.vi"/>
+				<Item Name="chr62000P Set Power Protect.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Power Protect.vi"/>
+				<Item Name="chr62000P Set Current Slew Infinite.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current Slew Infinite.vi"/>
+				<Item Name="chr62000P Set Current Slew.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current Slew.vi"/>
+				<Item Name="chr62000P Set Current Protect.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current Protect.vi"/>
+				<Item Name="chr62000P Set Voltage Slew.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Voltage Slew.vi"/>
+				<Item Name="chr62000P Set Voltage Protect.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Voltage Protect.vi"/>
+				<Item Name="chr62000P Init Interface.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Init Interface.vi"/>
+				<Item Name="chr62000P Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Initialize.vi"/>
+				<Item Name="chr62000P VI Tree.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P VI Tree.vi"/>
 			</Item>
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
@@ -781,7 +843,10 @@
 			<Item Name="SNMP ASCII Hex String To Binary String.vi" Type="VI" URL="../NistPluggableModules/Sensor/SensorPlugins/RoomAlert/snmp communication.llb/SNMP ASCII Hex String To Binary String.vi"/>
 			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
 			<Item Name="lvinput.dll" Type="Document" URL="/&lt;resource&gt;/lvinput.dll"/>
-			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="chr62000P_32.dll" Type="Document" URL="chr62000P_32.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
