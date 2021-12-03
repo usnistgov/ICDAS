@@ -74,7 +74,6 @@
 		<Item Name="Config_class.lvlib" Type="Library" URL="../LV_Config_class/Config_class.lvlib"/>
 		<Item Name="ICDAS_Main.vi" Type="VI" URL="../ICDAS_Main.vi"/>
 		<Item Name="TestChromaPS.vi" Type="VI" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/ChromaPowerSupply/TestChromaPS.vi"/>
-		<Item Name="SetParameterOptions.ctl" Type="VI" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/AcPwrBaseClass/TypeDefs/SetParameterOptions.ctl"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="C63800 IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 IVI Error Converter.vi"/>
@@ -846,9 +845,6 @@
 			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
 			<Item Name="lvinput.dll" Type="Document" URL="/&lt;resource&gt;/lvinput.dll"/>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
-			<Item Name="chr62000P_32.dll" Type="Document" URL="chr62000P_32.dll">
-				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
-			</Item>
 			<Item Name="ICDASUserEvents.ctl" Type="VI" URL="../UserEvents/ICDASUserEvents.ctl"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
