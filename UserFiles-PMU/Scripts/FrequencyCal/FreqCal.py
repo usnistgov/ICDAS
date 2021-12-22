@@ -4,6 +4,7 @@ import sys
 from lta_err import Lta_Error
 from collections import OrderedDict
 import numpy as np
+import math
 
 
 class StdTests(object):
@@ -33,12 +34,13 @@ class StdTests(object):
     
       #constructor
     #def __init__(self,Fs,F0,Fsamp,Vnom,Inom,Duration,PMUclass,lta,ntries,secwait,ecode):
-    def __init__(self,Duration,Config,Vnom,Inom):
+    def __init__(self,Duration,Fs,Config,Vnom,Inom):
         try: 
 
         #Would be good to limit these to safe values 
             self.Duration = float(Duration)
             self.Config = Config
+            self.Fs = Fs
 
  
             self.Vnom = Vnom
@@ -131,9 +133,10 @@ class StdTests(object):
         except Exception as ex:
             raise type(ex) ("Frequency Range Test Failure:"+ex.message)
 
- # Measurement bandwidth (modulation)    
-    def DynamicRange(self):
-        print("Performing Dynamic Range tests")
+ # Dynamic Measuring Range Tests   
+    # Set modulation frequency to equal the measuring range then vary the modulation index
+    def DynamicMeasRange(self):
+        print("Performing Dynamic Measuring Range tests")
         
         # fix frequency and vary index
             
@@ -152,13 +155,14 @@ class StdTests(object):
             self.set_init()
             WfrmParams = lta.__get__('FGen.FunctionParams')
         except Exception as ex:
-            raise type(ex)("Measurement Bandwidth Test - unable to get Waveform Parameters . " +ex.message)
+            raise type(ex)("Dynamic Measuring Range Test - unable to get Waveform Parameters . " +ex.message)
             
-        # Frequency Modulation
+        # Dynamic Measuring Range Test
+        # hild the modulation frequency constant and increment through modulation index from 0.1 to 1
         WfrmParams[None][Fa][:] = float(Fmax)
         kmod = range(1,int(Kmax*10),int(Kincr*10))+[int(Kmax*10)]
         
-        # loop through the range of frequencies        
+        # loop through the range of modulation indexes        
         for k in kmod:
             print "Kmod = ", float(k)/10
             WfrmParams[None][Ka][:] = float(k)/10
@@ -168,7 +172,7 @@ class StdTests(object):
                 Error = lta.__set__('FGen.FunctionParams',WfrmParams)
             except Exception as ex:
                 print Error
-                raise type(ex)("Measurement Bandwidth Test - unable to set Waveform Parameters . " +ex.message)
+                raise type(ex)("Dynamic Measuring Range Test - unable to set Waveform Parameters . " +ex.message)
             
             # run one test
             try:
@@ -178,11 +182,75 @@ class StdTests(object):
                                                                            
             except Exception as ex:
                 print (Error)
-                raise type(ex)("Kx="+str(WfrmParams[None][Fa][1]) 
+                raise type(ex)("Ka="+str(WfrmParams[None][Ka][1]) 
                                     +", kmod="+ str(k)+", Fs="+str(self.Fs)+". "+ex.message+ex.message) 
                                     
-                                    
 
+ # Dynamic Operating Range Tests   
+    def DynamicOpRange(self):
+        # Hold the modulation index at the measuring range value, and vary the modulation frequency from 1 Hz to the operating range
+        print("Performing Dynamic Operating Range tests")
+        
+        # fix index and vary frequency
+        Kmax = 5
+        FStart = 1;
+        FStop = 5
+        Fincr = 0.5
+        
+        # get the parameter indices        
+        _,_,_,_,_,_,Fa,Ka,_,_,_,_,_,_,_=self.getParamIdx()
+        #VA,VB,VC,IA,IB,IC=self.getPhaseIdx()               
+        
+        
+        try:
+            self.set_init()
+            WfrmParams = lta.__get__('FGen.FunctionParams')
+        except Exception as ex:
+            raise type(ex)("Dynamic Measuring Range Test - unable to get Waveform Parameters . " +ex.message)
+        
+        WfrmParams[None][Ka][:] = float(Kmax)
+        fmod = range(int(FStart*10),int(FStop*10),int(Fincr*10))+[int(FStop*10)]
+
+        for f in fmod:
+            
+            # AnalysisCycles must include at least 1 modulation cycle of data
+            Config = lta.__get__('Analysis.Config')
+            Config[None]['AnalysisCycles'] = float(math.ceil(10*Config[None]['F0']/f))
+            print "Fmod = ", float(f)/10," AnalysisCycles = ", Config[None]['AnalysisCycles']
+            
+            
+            # limit AnalysisCycles to 25
+            AcycLim = 25
+            if Config[None]['AnalysisCycles'] > AcycLim:
+                Config[None]['AnalysisCycles'] = float(AcycLim)                                                        
+
+            try:
+                Error=lta.__set__('Analysis.Config',Config)
+            except Exception as ex:
+                print Error
+                raise type(ex)("Dynamic Operating Range Test - unable to set Analysis Configuration . " +ex.message)
+           
+            
+            WfrmParams[None][Fa][:] = float(f)/10
+            
+            # set the waveform params            
+            try:
+                Error = lta.__set__('FGen.FunctionParams',WfrmParams)
+            except Exception as ex:
+                print Error
+                raise type(ex)("Dynamic Measuring Range Test - unable to set Waveform Parameters . " +ex.message)
+            
+            # run one test
+            try:
+                lta.s.settimeout(1000)                       
+                Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                lta.s.settimeout(10)                            
+                                                                           
+            except Exception as ex:
+                print (Error)
+                raise type(ex)("Fa="+str(WfrmParams[None][Fa][1]) 
+                                    +", fmod="+ str(f)+", Fs="+str(self.Fs)+". "+ex.message+ex.message) 
+ 
 # ------------------ MAIN SCRIPT ---------------------------------------------
 #------------------- following code must be in all scripts--------------------
 lta = Lta("127.0.0.1",60100)    # all scripts must create  an Lta object
@@ -195,7 +263,7 @@ try:
 
     UsrTimeout = lta.s.gettimeout()
     
-    Duration = 0.5    # Analysis.Duration
+    Duration = 1    # Analysis.Duration
     
     # Analysis.Config
     Config = OrderedDict()      
@@ -208,7 +276,6 @@ try:
    
     Fs_ini = 50.  #doesnt matter this default value, to be changed later
     #Fs_list = {60:[10,12,15,20,30,60],50:[10,25,50], 63:[10]} #63 inserted for testing
-    Fs_list = {50:{50}}
     FSamp = 48000.
     Vnom = 70.
     Inom = 5.
@@ -218,12 +285,13 @@ try:
 
 
     # StdTests instance
-    t = StdTests(Duration,Config,Vnom,Inom)
+    t = StdTests(Duration,Fs_ini,Config,Vnom,Inom)
     
     
     #list of tests to be performed
     func_list = [#t.StaticRange,
-                 t.DynamicRange, 
+                 #t.DynamicMeasRange, 
+                  t.DynamicOpRange,
                  #t.Harm, 
                  #t.RampFreq, 
                  #t.Step 
@@ -234,8 +302,6 @@ try:
 
     #execution of tests for each Fs
     for my_func in func_list:
-        for Fs in Fs_list[Config['F0']]:
-            #t.SetFs(Fs); print("\n\n ---- Test for Fs = " + str(Fs))
             try:
                 lta.s.settimeout(10)   
                 my_func()
