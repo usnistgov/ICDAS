@@ -176,7 +176,7 @@ class StdTests(object):
             
             # run one test
             try:
-                lta.s.settimeout(200)                       
+                lta.s.settimeout(1000)                       
                 Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
                 lta.s.settimeout(10)                            
                                                                            
@@ -218,19 +218,12 @@ class StdTests(object):
             Config[None]['AnalysisCycles'] = float(math.ceil(10*Config[None]['F0']/f))
             print "Fmod = ", float(f)/10," AnalysisCycles = ", Config[None]['AnalysisCycles']
             
-            
-            # limit AnalysisCycles to 25
-            AcycLim = 25
-            if Config[None]['AnalysisCycles'] > AcycLim:
-                Config[None]['AnalysisCycles'] = float(AcycLim)                                                        
-
             try:
                 Error=lta.__set__('Analysis.Config',Config)
             except Exception as ex:
                 print Error
                 raise type(ex)("Dynamic Operating Range Test - unable to set Analysis Configuration . " +ex.message)
-           
-            
+          
             WfrmParams[None][Fa][:] = float(f)/10
             
             # set the waveform params            
@@ -263,7 +256,7 @@ try:
 
     UsrTimeout = lta.s.gettimeout()
     
-    Duration = 1    # Analysis.Duration
+    Duration = 1.0   # Analysis.Duration
     
     # Analysis.Config
     Config = OrderedDict()      
