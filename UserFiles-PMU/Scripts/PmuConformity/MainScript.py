@@ -162,7 +162,7 @@ class StdTests(object):
                 
                 
             while iteration > 0:
-                print 'iterations remaining = ', iteration ', T0 = ',stepTime 
+                #print('iterations remaining = ', iteration ', T0 = ',stepTime) 
                 params['FunctionConfig']['T0'] = -float(stepTime)
                 try: 
                     Error = lta.__set__('FGen.FunctionArbs',params)
@@ -222,12 +222,12 @@ try:
     
     
     #list of tests to be performed
-    func_list = [#t.FreqRange,
+    func_list = [t.FreqRange,
                  #t.Magnitude, 
                  #t.Harm, 
                  #t.MeasBand, 
                  #t.RampFreq, 
-                 t.Step 
+                 #t.Step 
                  #t.RepLatency
                  ]     
 
