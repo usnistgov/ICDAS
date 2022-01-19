@@ -846,9 +846,13 @@
 			<Item Name="IviScope.dll" Type="Document" URL="IviScope.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="clClocks.ctl" Type="VI" URL="../NistPluggableModules/Sync/SyncPlugins/PXI_MultiTrig/Typedefs/clClocks.ctl"/>
 			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="SensorQueue.ctl" Type="VI" URL="../NistPluggableModules/Analysis/AnalysisPlugins/AnalysisPluginBaseClass/Typedefs/SensorQueue.ctl"/>
+			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="PerformCleanUp.vi" Type="VI" URL="../SubVI/VisualizationManagement/PerformCleanUp.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
