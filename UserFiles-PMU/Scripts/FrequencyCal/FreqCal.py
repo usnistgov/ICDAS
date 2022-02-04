@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from lta import Lta
 import sys
+from time import sleep
 from lta_err import Lta_Error
 from collections import OrderedDict
 import numpy as np
@@ -244,6 +245,122 @@ class StdTests(object):
                 raise type(ex)("Fa="+str(WfrmParams[None][Fa][1]) 
                                     +", fmod="+ str(f)+", Fs="+str(self.Fs)+". "+ex.message+ex.message) 
  
+# Frequency Step Changes
+    def FreqStep(self):
+        print("Performing Frequency Step Tests")
+        
+        # get the parameter indices        
+        _,Fin,Ps,_,_,_,_,_,_,_,_,_,_,KfS,_=self.getParamIdx()        
+        
+        stepTime = 1;
+        incr = .1/self.Config['F0']
+        #self.Config['SettlingTime'] = 
+        #phaseIncr = .1*360  # phase increment in degrees
+        iteration = 10  
+        fStart = 0
+        fStep = 1
+        self.Duration = float(2)
+
+        try:        
+            try: 
+                self.set_init()     # default function parameters
+                
+                # Step index                    
+                params = lta.__get__('FGen.FunctionParams')
+                params[None][KfS][:] = float(fStep)
+                params[None][Fin][:] = float(self.Config['F0']+fStart)
+                Error = lta.__set__('FGen.FunctionParams',params)
+                
+                config = lta.__get__('FGen.FunctionArbs')  
+                
+            except Exception as ex:
+                raise type(ex) ("Step Change Test Failure:"+ex.message)
+                
+                
+            while iteration > 0:
+                #print('iterations remaining = ', iteration ', T0 = ',stepTime) 
+                config['FunctionConfig']['T0'] = float(stepTime)
+                #params['FunctionConfig']['SettlingTime'] = float(stepTime-1)                               
+                
+                try: 
+                    #Error = lta.__set__('FGen.FunctionParams',params)
+                    Error = lta.__set__('FGen.FunctionArbs',config)
+                    lta.s.settimeout(200)
+                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    lta.s.settimeout(10)                       
+                except Exception as ex:
+                    print (Error)
+                    raise type(ex)(str(iteration)+ex.message) 
+                    
+                stepTime += incr
+                iteration += -1
+                # shift the phase along with the step time 
+                #params[None][Ps][:] = params[None][Ps][:]+phaseIncr
+                sleep(5)
+                
+        except Exception as ex:
+            raise type(ex) ("Step Change Test Failure:"+ex.message)
+                    
+           
+# Frequency Step Changes
+    def RocofStep(self):
+        print("Performing ROCOF Step Tests")
+        
+        # get the parameter indices        
+        _,Fin,Ps,_,_,_,_,_,_,_,_,_,_,_,KrS=self.getParamIdx()        
+        
+        stepTime = 2;
+        incr = .1/self.Config['F0']
+        #self.Config['SettlingTime'] = 
+        #phaseIncr = .1*360  # phase increment in degrees
+        iteration = 10 
+        fStart = 0
+        rStep = -1
+        self.Duration = float(3)
+
+        try:        
+            try: 
+                self.Config['SettlingTime'] = float(1.0)
+                self.Duration = float(4.0) 
+                self.set_init()     # default function parameters
+                
+                # Step index                    
+                params = lta.__get__('FGen.FunctionParams')
+                params[None][KrS][:] = float(rStep)
+                params[None][Fin][:] = float(self.Config['F0']+fStart)
+                Error = lta.__set__('FGen.FunctionParams',params)
+                
+                config = lta.__get__('FGen.FunctionArbs')  
+                
+            except Exception as ex:
+                raise type(ex) ("ROCOF Change Test Failure:"+ex.message)
+                
+                
+            while iteration > 0:
+                #print('iterations remaining = ', iteration ', T0 = ',stepTime) 
+                config['FunctionConfig']['SettlingTime'] = float(stepTime)
+                
+                try: 
+                    #Error = lta.__set__('FGen.FunctionParams',params)
+                    Error = lta.__set__('FGen.FunctionArbs',config)
+                    lta.s.settimeout(200)
+                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    lta.s.settimeout(10)                       
+                except Exception as ex:
+                    print (Error)
+                    raise type(ex)(str(iteration)+ex.message) 
+                    
+                stepTime += incr
+                iteration += -1
+                # shift the phase along with the step time 
+                #params[None][Ps][:] = params[None][Ps][:]+phaseIncr
+                sleep(5)
+                
+        except Exception as ex:
+            raise type(ex) ("Step Change Test Failure:"+ex.message)
+                    
+
+
 # ------------------ MAIN SCRIPT ---------------------------------------------
 #------------------- following code must be in all scripts--------------------
 lta = Lta("127.0.0.1",60100)    # all scripts must create  an Lta object
@@ -284,10 +401,11 @@ try:
     #list of tests to be performed
     func_list = [#t.StaticRange,
                  #t.DynamicMeasRange, 
-                  t.DynamicOpRange,
+                 #t.DynamicOpRange,
                  #t.Harm, 
                  #t.RampFreq, 
-                 #t.Step 
+                 #t.FreqStep 
+                 t.RocofStep
                  #t.RepLatency
                  ]     
 
