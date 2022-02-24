@@ -245,6 +245,118 @@ class StdTests(object):
                 raise type(ex)("Fa="+str(WfrmParams[None][Fa][1]) 
                                     +", fmod="+ str(f)+", Fs="+str(self.Fs)+". "+ex.message+ex.message) 
  
+    def Harm_13(self):
+        # An inner function to set up the WfrmParams        
+        def genHarms(WfrmParams,fFund,hPhase):    
+            WfrmParams[None][1][:] = float(fFund)
+            h = 2
+            idx = delim+1
+            mags = [2.0,5.0,1.0,6.0,0.5,5.0,0.5,1.5,0.5,3.5,0.5,3.0]
+            for m in mags:
+                WfrmParams[None][idx][:] = float(h * fFund)   # frequencies
+                idx+=1
+                WfrmParams[None][idx][:] = hPhase  # harmonic phases
+                idx+=1
+                WfrmParams[None][idx][:] = float(m)/100   # magnitude in %
+                idx+=1
+                h+=1
+            WfrmParams[None][idx][:] = float(-1)   # delimiter
+            return WfrmParams
+          
+          
+        def oneTest(WfrmParams)  :
+            try:
+                Error = lta.__set__('FGen.FunctionParams',WfrmParams)
+                lta.s.settimeout(200)
+                Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                lta.s.settimeout(10)                       
+            except Exception as ex:
+                print (Error)
+                raise type(ex)(str(ex.message)) 
+          
+                     
+        print("Performing 13-Harmonic Testa")
+        
+        _,Fin,Ps,delim,_,_,_,_,_,_,_,_,_,_,_=self.getParamIdx()
+        self.Duration = float(6)
+        Config['SettlingTime']= 1.0
+        fFund = 50
+        
+        print("Test 1: Nominal Frequency, 0 Harmonic Phase")
+        try:
+           self.set_init()
+           WfrmParams = lta.__get__('FGen.FunctionParams')
+        except Exception as ex:
+            raise type(ex)("Dynamic Measuring Range Test - unable to get Waveform Parameters . " +ex.message)
+
+        WfrmParams[None][delim][:] = float(-1) # delimiter
+        WfrmParams = genHarms(WfrmParams,fFund,0)
+        oneTest(WfrmParams)
+
+
+        print("Test 2: Nominal Frequency, 180 Harmonic Phase")
+        try:
+           self.set_init()
+           WfrmParams = lta.__get__('FGen.FunctionParams')
+        except Exception as ex:
+            raise type(ex)("Dynamic Measuring Range Test - unable to get Waveform Parameters . " +ex.message)
+
+        WfrmParams[None][delim][:] = float(-1) # delimiter
+        WfrmParams = genHarms(WfrmParams,fFund,180)
+        oneTest(WfrmParams)
+            
+            
+        print("Test 3: Nominal Frequency + 2 Hz, 0 Harmonic Phase ")
+        fFund+=2;
+        try:
+           self.set_init()
+           WfrmParams = lta.__get__('FGen.FunctionParams')
+        except Exception as ex:
+            raise type(ex)("Dynamic Measuring Range Test - unable to get Waveform Parameters . " +ex.message)
+
+        WfrmParams[None][delim][:] = float(-1) # delimiter
+        WfrmParams = genHarms(WfrmParams,fFund,0)
+        oneTest(WfrmParams)
+ 
+        print("Test 3: Nominal Frequency + 2 Hz, 180 Harmonic Phase ")
+        # self.Config['F0']+=2;
+        try:
+           self.set_init()
+           WfrmParams = lta.__get__('FGen.FunctionParams')
+        except Exception as ex:
+            raise type(ex)("Dynamic Measuring Range Test - unable to get Waveform Parameters . " +ex.message)
+
+        WfrmParams[None][delim][:] = float(-1) # delimiter
+        WfrmParams = genHarms(WfrmParams,fFund,180)
+        oneTest(WfrmParams)
+
+        print("Test 3: Nominal Frequency - 2 Hz, 0 Harmonic Phase ")
+        fFund-=4;
+        try:
+           self.set_init()
+           WfrmParams = lta.__get__('FGen.FunctionParams')
+        except Exception as ex:
+            raise type(ex)("Dynamic Measuring Range Test - unable to get Waveform Parameters . " +ex.message)
+
+        WfrmParams[None][delim][:] = float(-1) # delimiter
+        WfrmParams = genHarms(WfrmParams,fFund,0)
+        oneTest(WfrmParams)
+
+        print("Test 4: Nominal Frequency - 2 Hz, 180 Harmonic Phase ")
+        #self.Config['F0']-=4;
+        try:
+           self.set_init()
+           WfrmParams = lta.__get__('FGen.FunctionParams')
+        except Exception as ex:
+            raise type(ex)("Dynamic Measuring Range Test - unable to get Waveform Parameters . " +ex.message)
+
+        WfrmParams[None][delim][:] = float(-1) # delimiter
+        WfrmParams = genHarms(WfrmParams,fFund,180)
+        oneTest(WfrmParams)
+                     
+                      
+
+
 # Frequency Step Changes
     def FreqStep(self):
         print("Performing Frequency Step Tests")
@@ -402,10 +514,10 @@ try:
     func_list = [#t.StaticRange,
                  #t.DynamicMeasRange, 
                  #t.DynamicOpRange,
-                 #t.Harm, 
+                 t.Harm_13, 
                  #t.RampFreq, 
                  #t.FreqStep 
-                 t.RocofStep
+                 #t.RocofStep
                  #t.RepLatency
                  ]     
 
