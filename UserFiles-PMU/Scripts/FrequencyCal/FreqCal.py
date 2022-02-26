@@ -65,12 +65,32 @@ class StdTests(object):
         try:
             """ Sets initial default values to the framework"""
             print("Setting default params")
+        except Exception as ex:
+            print Error
+            raise ex
+            
             #Setting Duration
+            
+        arbs = lta.__get__('FGen.FunctionArbs')
+        arbs['FunctionConfig']['T0'] = float(0)
+        arbs['FunctionConfig']['SettlingTime'] = float(0)
+            
+        try:            
+            Error = lta.__set__('FGen.FunctionArbs',arbs)
+            print ('Function Arbs Set')
+        except Exception as ex:
+            print Error
+            raise ex
         
-        
+        try:
             #Analysis.Duration
             Error=lta.__set__('Analysis.Duration',{None: self.Duration})
-            
+            print ('Analysis Duration Set')
+        except Exception as ex:
+            print Error
+            raise ex
+           
+        try:   
             #Analysis.Config
             Error=lta.__set__('Analysis.Config',{None: self.Config})
             
@@ -414,7 +434,7 @@ class StdTests(object):
             raise type(ex) ("Step Change Test Failure:"+ex.message)
                     
            
-# Frequency Step Changes
+# ROCOF Step Changes
     def RocofStep(self):
         print("Performing ROCOF Step Tests")
         
@@ -445,6 +465,7 @@ class StdTests(object):
                 config = lta.__get__('FGen.FunctionArbs')  
                 
             except Exception as ex:
+                print(Error)
                 raise type(ex) ("ROCOF Change Test Failure:"+ex.message)
                 
                 
@@ -471,7 +492,208 @@ class StdTests(object):
         except Exception as ex:
             raise type(ex) ("Step Change Test Failure:"+ex.message)
                     
+# Phase Step Changes
+    def PhaseStep(self):
+        print("Performing Phase Step Tests")
+        
+        # get the parameter indices        
+        _,_,_,_,_,_,_,_,_,_,_,KaS,_,_,_=self.getParamIdx()        
+        
+        stepTime = 1;
+        incr = .1/self.Config['F0']
+        #self.Config['SettlingTime'] = 
+        #phaseIncr = .1*360  # phase increment in degrees
+        iteration = 10 
+        pStep = -17.1887
+        self.Duration = float(1.5)
+        self.Config['SettlingTime'] = float(0.5)
 
+
+        try:        
+            try: 
+                self.set_init()     # default function parameters
+                
+                # Step index                    
+                params = lta.__get__('FGen.FunctionParams')
+                params[None][KaS][:] = float(pStep)
+                Error = lta.__set__('FGen.FunctionParams',params)
+                
+                fConfig = lta.__get__('FGen.FunctionArbs')  
+                
+            except Exception as ex:
+                raise type(ex) ("Phase Change Test Failure:"+ex.message)
+                
+                
+            while iteration > 0:
+                #print('iterations remaining = ', iteration ', T0 = ',stepTime) 
+                fConfig['FunctionConfig']['T0'] = float(stepTime)
+                
+                try: 
+                    Error = lta.__set__('FGen.FunctionArbs',fConfig)
+                    lta.s.settimeout(200)
+                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    lta.s.settimeout(10)                       
+                except Exception as ex:
+                    print (Error)
+                    raise type(ex)(str(iteration)+ex.message) 
+                    
+                stepTime += incr
+                iteration += -1
+                sleep(5)
+                
+        except Exception as ex:
+            raise type(ex) ("Step Change Test Failure:"+ex.message)
+            
+# Phase Step Changes
+    def MagStep(self):
+        print("Performing Phase Step Tests")
+        
+        # get the parameter indices        
+        _,_,_,_,_,_,_,_,_,_,_,_,KxS,_,_=self.getParamIdx()        
+        
+        stepTime = 1;
+        incr = .1/self.Config['F0']
+        #self.Config['SettlingTime'] = 
+        #phaseIncr = .1*360  # phase increment in degrees
+        iteration = 10 
+        mStep = -0.8
+        self.Duration = float(1.5)
+        self.Config['SettlingTime'] = float(0.5)
+
+
+        try:        
+            try: 
+                self.set_init()     # default function parameters
+                
+                # Step index                    
+                params = lta.__get__('FGen.FunctionParams')
+                params[None][KxS][:] = float(mStep)
+                Error = lta.__set__('FGen.FunctionParams',params)
+                
+                fConfig = lta.__get__('FGen.FunctionArbs')  
+                
+            except Exception as ex:
+                raise type(ex) ("Phase Change Test Failure:"+ex.message)
+                
+                
+            while iteration > 0:
+                #print('iterations remaining = ', iteration ', T0 = ',stepTime) 
+                fConfig['FunctionConfig']['T0'] = float(stepTime)
+                
+                try: 
+                    Error = lta.__set__('FGen.FunctionArbs',fConfig)
+                    lta.s.settimeout(200)
+                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    lta.s.settimeout(10)                       
+                except Exception as ex:
+                    print (Error)
+                    raise type(ex)(str(iteration)+ex.message) 
+                    
+                stepTime += incr
+                iteration += -1
+                sleep(5)
+                
+        except Exception as ex:
+            raise type(ex) ("Step Change Test Failure:"+ex.message) 
+            
+            
+# Step Changes
+    def Step(self):
+        print("Performing Step Change Tests")
+        
+        #stepTime = .002;
+        numSteps = 10;
+        stepTime = .1/self.Config['F0']
+        #magAmpl = 0.1
+        angleAmpl = 17.1887
+        #freqStep = 1
+        self.Duration = float(1.5)
+        self.Config['SettlingTime'] = float(0)
+        
+        
+        Xm,Fin,Pin,Fh,Ph,kh,Fa,ka,Fx,Kx,Rf,KaS,KxS,KfS,KrS=self.getParamIdx()
+        #VA,VB,VC,IA,IB,IC=self.getPhaseIdx()
+        
+
+        try:        
+#            try: 
+#                self.set_init()     # default function parameters
+#                
+#                # Step index                    
+#                params = lta.__get__('FGen.FunctionParams')
+#                params[None][KxS][:] = float(magAmpl)
+#                Error = lta.__set__('FGen.FunctionParams',params)
+#                
+#                arbs = lta.__get__('FGen.FunctionArbs')  
+#                
+#            except Exception as ex:
+#                raise type(ex) ("Step Change Test Failure:"+ex.message)
+#                
+#            iteration = numSteps
+#            while iteration > 0:
+#                print 'mag step iterations remaining = ', iteration 
+#                self.__iterStep__(arbs)
+#                iteration += -1
+            self.set_init()     # default function parameters
+            
+            # Set the function T0 Time to 1
+            try: 
+                arbs = lta.__get__('FGen.FunctionArbs')  
+            except Exception as ex:
+                raise type(ex)(ex.message)   
+                
+            arbs['FunctionConfig']['T0'] = float(0.5)
+            arbs['FunctionConfig']['SettlingTime'] = float(1)
+            
+            try:
+                Error = lta.__set__('FGen.FunctionArbs',arbs)
+            except:
+                print Error
+                raise type(ex)(ex.message)   
+                
+
+            # set the function params    
+            try:   
+                params = lta.__get__('FGen.FunctionParams')
+            except Exception as ex:
+                raise type(ex)(ex.message) 
+            try:
+                arbs = lta.__get__('FGen.FunctionArbs')                
+                params[None][KxS][:] = float(0)
+                params[None][KaS][:] = float(angleAmpl) 
+            except Exception as ex:
+                raise type(ex)(ex.message) 
+            try:                
+                Error = lta.__set__('FGen.FunctionParams',params)
+#                arbs['FunctionConfig']['T0'] = arbs['FunctionConfig']['T0'] - float(stepTime)
+#                Error = lta.__set__('FGen.FunctionArbs',arbs)
+            except Exception as ex:
+                print(Error)
+                raise type(ex)(ex.message) 
+           
+            iteration = 10            
+            while iteration > 0:
+                print 'angle step iterations remaining = ', iteration 
+                self.__iterStep__(arbs)  
+                iteration += -1
+                
+        except Exception as ex:
+            raise type(ex) ("Step Change Test Failure:"+ex.message)            
+
+   # one iteration of the step test
+    def __iterStep__(self,arbs):
+        stepTime = .1/Fs
+
+        try: 
+           lta.s.settimeout(200)
+           Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+           lta.s.settimeout(10)                       
+           print 'T0 = ',arbs['FunctionConfig']['T0']
+           arbs['FunctionConfig']['T0'] = float(arbs['FunctionConfig']['T0']-(stepTime))
+           Error = lta.__set__('FGen.FunctionArbs',arbs)                    
+        except Exception as ex:
+           print (Error)
+           raise type(ex)(ex.message) 
 
 # ------------------ MAIN SCRIPT ---------------------------------------------
 #------------------- following code must be in all scripts--------------------
@@ -501,6 +723,7 @@ try:
     FSamp = 48000.
     Vnom = 70.
     Inom = 5.
+    Fs = 50
     
     #list of exceptions             
     ex_list = []
@@ -514,10 +737,13 @@ try:
     func_list = [#t.StaticRange,
                  #t.DynamicMeasRange, 
                  #t.DynamicOpRange,
-                 t.Harm_13, 
+                 #t.Harm_13, 
                  #t.RampFreq, 
                  #t.FreqStep 
                  #t.RocofStep
+                 #t.PhaseStep
+                 t.Step
+                 #t.MagStep
                  #t.RepLatency
                  ]     
 
