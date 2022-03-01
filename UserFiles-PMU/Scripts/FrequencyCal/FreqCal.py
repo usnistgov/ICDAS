@@ -505,7 +505,7 @@ class StdTests(object):
         #phaseIncr = .1*360  # phase increment in degrees
         iteration = 10 
         pStep = -17.1887
-        self.Duration = float(1.5)
+        self.Duration = float(1)
         self.Config['SettlingTime'] = float(0.5)
 
 
@@ -604,7 +604,8 @@ class StdTests(object):
         #stepTime = .002;
         numSteps = 10;
         stepTime = .1/self.Config['F0']
-        #magAmpl = 0.1
+        #magAmpl = -0.8
+        magAmpl = 0.1
         angleAmpl = 17.1887
         #freqStep = 1
         self.Duration = float(1.5)
@@ -616,24 +617,9 @@ class StdTests(object):
         
 
         try:        
-#            try: 
-#                self.set_init()     # default function parameters
-#                
-#                # Step index                    
-#                params = lta.__get__('FGen.FunctionParams')
-#                params[None][KxS][:] = float(magAmpl)
-#                Error = lta.__set__('FGen.FunctionParams',params)
-#                
-#                arbs = lta.__get__('FGen.FunctionArbs')  
-#                
-#            except Exception as ex:
-#                raise type(ex) ("Step Change Test Failure:"+ex.message)
-#                
-#            iteration = numSteps
-#            while iteration > 0:
-#                print 'mag step iterations remaining = ', iteration 
-#                self.__iterStep__(arbs)
-#                iteration += -1
+        
+            # Initiaize       
+            self.Config['AnalysisCycles'] = float(3.0)  # only need 3 analysis cycles         
             self.set_init()     # default function parameters
             
             # Set the function T0 Time to 1
@@ -652,31 +638,59 @@ class StdTests(object):
                 raise type(ex)(ex.message)   
                 
 
-            # set the function params    
+            # Get the params and arbs    
             try:   
                 params = lta.__get__('FGen.FunctionParams')
             except Exception as ex:
                 raise type(ex)(ex.message) 
             try:
                 arbs = lta.__get__('FGen.FunctionArbs')                
-                params[None][KxS][:] = float(0)
-                params[None][KaS][:] = float(angleAmpl) 
             except Exception as ex:
-                raise type(ex)(ex.message) 
+               raise type(ex)(ex.message) 
+               
+               
+#           # phase step first    
+#            params[None][KxS][:] = float(0)
+#            params[None][KaS][:] = float(-angleAmpl) 
+#            try:                
+#                Error = lta.__set__('FGen.FunctionParams',params)
+#            except Exception as ex:
+#                print(Error)
+#                raise type(ex)(ex.message) 
+#           
+#            iteration = 10            
+#            while iteration > 0:
+#                print 'angle step iterations remaining = ', iteration 
+#                self.__iterStep__(arbs)  
+#                iteration += -1
+#                
+#            # Now the mag step   
+#                
+#            # reset the arbs    
+#            try:
+#                Error = lta.__set__('FGen.FunctionArbs',arbs)
+#            except:
+#                print Error
+#                raise type(ex)(ex.message)   
+                
+                
+                
+            # set the params    
+            params[None][KxS][:] = float(magAmpl)
+            params[None][KaS][:] = float(0) 
             try:                
                 Error = lta.__set__('FGen.FunctionParams',params)
-#                arbs['FunctionConfig']['T0'] = arbs['FunctionConfig']['T0'] - float(stepTime)
-#                Error = lta.__set__('FGen.FunctionArbs',arbs)
             except Exception as ex:
                 print(Error)
                 raise type(ex)(ex.message) 
            
             iteration = 10            
             while iteration > 0:
-                print 'angle step iterations remaining = ', iteration 
+                print 'mag step iterations remaining = ', iteration 
                 self.__iterStep__(arbs)  
                 iteration += -1
                 
+        # done tith these tests                    
         except Exception as ex:
             raise type(ex) ("Step Change Test Failure:"+ex.message)            
 
