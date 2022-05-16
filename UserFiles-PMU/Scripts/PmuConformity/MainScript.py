@@ -31,10 +31,15 @@ class StdTests(object):
     ecode - error code for trying again
     Dur - test duration (default 5 seconds)
     """
+    @staticmethod
+    def getParamIdx():
+        #useful indices# 
+        Xm=0;Fin=1;Pin=2;Fh=3;Ph=4;Kh=5;Fa=6;Ka=7;Fx=8;Kx=9;Rf=10;KaS=11;KxS=12;KfS=13;KrS=14;
+        return Xm,Fin,Pin,Fh,Ph,Kh,Fa,Ka,Fx,Kx,Rf,KaS,KxS,KfS,KrS
     
       #constructor
     #def __init__(self,Fs,F0,Fsamp,Vnom,Inom,Duration,PMUclass,lta,ntries,secwait,ecode):
-    def __init__(self,Duration,Config,Vnom,Inom,PMUclass):
+    def __init__(self,Duration,Config,Vnom,Inom,PMUclass,Fs):
         try: 
             if PMUclass != "M" and PMUclass != "P":
                 raise Exception('Error: Unrecognizable PMU class')
@@ -47,6 +52,7 @@ class StdTests(object):
             self.Vnom = Vnom
             self.Inom = Inom            
             self.PMUclass = PMUclass
+            self.Fs = Fs
             
             self.ntries = 30
             self.secwait = 60
@@ -132,8 +138,232 @@ class StdTests(object):
                              
         except Exception as ex:
             raise type(ex) ("Frequency Range Test Failure:"+ex.message)
+ 
+# Magnitude Range Tests
+    def MagRange(self):
+        print ("Performing Magnitude Range Tests") 
+        Xm = 0;   # Magnitude index into WfrmParams
+        incr = 0.1;
+        iMag = 0.1  
+        vMag = 0.1
+        if self.PMUclass != 'M':
+            vMag = 0.8
+        try:   
+            try:
+                self.set_init()
+                WfrmParams = lta.__get__('FGen.FunctionParams')
+                A = WfrmParams[None][Xm].copy()
             
+            except Exception as ex:
+                raise ex
+                
+            while iMag < 2.1:
+                #print ('iMag = ',iMag, 'VMag = ',vMag)                
+                WfrmParams[None][Xm][0:3] = float(vMag)*A[0:3]
+                WfrmParams[None][Xm][3:7] = float(iMag)*A[3:7]
+                #print A
+                print 'Magnitudes: ',WfrmParams[None][Xm]
+                iMag += incr
+                if vMag < 1.2:
+                    vMag += incr
+                    
+                try:
+                    Error = lta.__set__('FGen.FunctionParams',WfrmParams)
+                    lta.s.settimeout(200)   
+                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    lta.s.settimeout(10)                       
+                except Exception as ex:
+                    print (Error)
+                    raise type(ex)(ex.message)                     
+                 
+        except Exception as ex:
+            raise type(ex) ("Magnitude Range Test Failure:"+ex.message)
+           
+# Harmonic Interfereing Signals test
+    def Harm(self):
+        print ("Performing Harmonic Intefering Signal Tests")
+
+        range = 50      # number of harmonics to test
+        fund = self.Config['F0'] 
+        Fh = 3          # index of harmonic frequency into WfrmParams
+        Ph = 4          # index of Harmonic Phase in WfrmParams
+        Kh = 5          # index of Harmonic Index
+        incr = 2
+        hFreq = fund * incr;
+
+        try:
+            try:
+                self.set_init();
+                WfrmParams = lta.__get__('FGen.FunctionParams')
+                WfrmParams[None][Ph][:] = [0, -120, 120, 0, -120, 120 ]
+                WfrmParams[None][Kh][:] = float(0.1)
+                
+            except Exception as ex:
+                raise ex
+                
+            while hFreq<=fund*range:
+                print 'harmonic number =', incr, ' frequency = ',hFreq
+                WfrmParams[None][Fh][:] = float(hFreq)
+                try:
+                    Error = lta.__set__('FGen.FunctionParams',WfrmParams)
+                    lta.s.settimeout(200)                       
+                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    lta.s.settimeout(10)                            
+                                                                           
+                except Exception as ex:
+                    print (Error)
+                    raise type(ex)(str(hFreq)+ex.message) 
+                    
+                incr += 1;
+                hFreq = incr*fund                                    
+                
+        except Exception as ex:
+            raise type(ex) ("Harmonic Test Failure:"+ex.message)
+
+ # Interharmonic Intefering Signals test
+    def IHarm(self):
+        print("Performing Interharmonic Intefering Signals Tests")
+
+        Fh = 3          # index of harmonic frequency into WfrmParams
+        Ph = 4          # index of Harmonic Phase in WfrmParams
+        Kh = 5          # index of Harmonic Index
+        
+        try:
+            try:
+                self.set_init();
+                WfrmParams = lta.__get__('FGen.FunctionParams')
+            except Exception as ex:
+                raise ex
+                
+            WfrmParams[None][Ph][:] = [0, -120, 120, 0, -120, 120 ]
+            WfrmParams[None][Kh][:] = float(0.1)
+            iFreq = self.Config['F0']
+            iFreqList = []
+            incr = 0
             
+            # create a list of frequencies IAW 60255-118-1 table 2            
+            while iFreq > 10:
+                iFreq = self.Config['F0'] - self.Fs/2 - (0.1 * 2**incr)
+                if iFreq < 10:
+                    iFreq = 10
+                #print '# ',incr,'Interharmonic Frequency = ', iFreq
+                iFreqList.append(iFreq)
+                incr += 1
+                
+            iFreqList.reverse()
+            incr = 0
+            
+            while iFreq < 2 * self.Config['F0']:
+                iFreq = self.Config['F0'] + self.Fs/2 + (0.1 * 2**incr)
+                if iFreq > 2 * self.Config['F0']:
+                    iFreq = 2 * self.Config['F0']
+                #print '# ',incr,'Interharmonic Frequency = ',iFreq                    
+                iFreqList.append(iFreq)
+                incr +=1
+                
+            #iterate over the list of iterharmonic frequencies
+            for iFreq in iFreqList:
+                print 'Interharmonic Frequency = ', iFreq
+                WfrmParams[None][Fh][:] = float(iFreq)
+                try:
+                    Error = lta.__set__('FGen.FunctionParams',WfrmParams)
+                    lta.s.settimeout(200)                       
+                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    lta.s.settimeout(10)                            
+                                                                           
+                except Exception as ex:
+                    print (Error)
+                    raise type(ex)(str(iFreq)+ex.message) 
+                                     
+        except Exception as ex:
+            raise type(ex) ("Interharmonic Test Failure:"+ex.message)
+# Measurement bandwidth (modulation)    
+    def MeasBand(self):
+        print("Performing Measurement Bandwidth (Modulation) Tests")
+        
+        # Range of modulation frequency
+        if self.PMUclass == "M":
+            Fmax = 5.
+            if self.Fs/5 < 5:
+                Fmax = self.Fs/5
+        elif self.PMUclass == "P":
+            Fmax = 2.
+            if self.Fs/10 < 2:
+                Fmax = self.Fs/10
+        else:
+            raise Exception("Measurement Bandwidth Test Error: Unsupported PMU class" % self.PMUclass)
+ 
+        
+        # get the parameter indices        
+        _,_,_,_,_,_,Fa,Ka,Fx,Kx,_,_,_,_,_=self.getParamIdx()
+        #VA,VB,VC,IA,IB,IC=self.getPhaseIdx()               
+        
+        
+        try:
+            self.set_init()
+            WfrmParams = lta.__get__('FGen.FunctionParams')
+        except Exception as ex:
+            raise type(ex)("Measurement Bandwidth Test - unable to get Waveform Parameters . " +ex.message)
+            
+        # Amplitude Modulation
+        WfrmParams[None][Kx][:] = float(0.1)
+        WfrmParams[None][Ka][:] = float(0)
+        fmod = range(1,int(Fmax*10),2)+[int(Fmax*10)]
+        
+        # loop through the range of frequencies  
+        print ("Running Amplitude Modulaton Tests")
+        for f in fmod:
+            print "Fmod = ", float(f)/10
+            WfrmParams[None][Fx][:] = float(f)/10
+            
+            # set the waveform params            
+            try:
+                Error = lta.__set__('FGen.FunctionParams',WfrmParams)
+            except Exception as ex:
+                print Error
+                raise type(ex)("Measurement Bandwidth Test - unable to set Waveform Parameters . " +ex.message)
+            
+            # run one test
+            try:
+                lta.s.settimeout(200)                       
+                Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                lta.s.settimeout(10)                            
+                                                                           
+            except Exception as ex:
+                print (Error)
+                raise type(ex)("Kx="+str(WfrmParams[None][Kx][1]) 
+                                    +", fmod="+ str(f)+"Hz, Fs="+str(self.Fs)+". "+ex.message+ex.message) 
+                                    
+                                    
+        WfrmParams[None][Fx][:] = float(0)
+        WfrmParams[None][Kx][:] = float(0)
+        
+        # Phase Modulation Tests
+        print ("Running Phase Modulation Tests")
+        WfrmParams[None][Ka][:] = float(0.1)
+        for f in fmod:
+            print "Fmod = ", float(f)/10
+            WfrmParams[None][Fa][:] = float(f)/10
+            
+            # set the waveform params            
+            try:
+                Error = lta.__set__('FGen.FunctionParams',WfrmParams)
+            except Exception as ex:
+                print Error
+                raise type(ex)("Measurement Bandwidth Test - unable to set Waveform Parameters . " +ex.message)
+            
+            # run one test
+            try:
+                lta.s.settimeout(200)                       
+                Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                lta.s.settimeout(10)                            
+                                                                           
+            except Exception as ex:
+                print (Error)
+                raise type(ex)("Ka="+str(WfrmParams[None][Ka][1]) 
+                                    +", fmod="+ str(f)+"Hz, Fs="+str(self.Fs)+". "+ex.message+ex.message) 
+                                    
+           
 # Step Changes
     def Step(self):
         print("Performing Step Chage Tests")
@@ -200,32 +430,33 @@ try:
     Config['F0'] = np.uint32(50) 
     Config['SettlingTime']= 0.0
     Config['AnalysisCycles'] = float(6.0)
-    Config['SampleRate'] = float(24000)
+    Config['SampleRate'] = float(48000)
     Config['NumChannels']= np.uint32(6)   
     
    
-    Fs_ini = 60.  #doesnt matter this default value, to be changed later
+    Fs_ini = 50.  #doesnt matter this default value, to be changed later
     #Fs_list = {60:[10,12,15,20,30,60],50:[10,25,50], 63:[10]} #63 inserted for testing
     Fs_list = {50:{50}}
-    FSamp = 9600.
     Vnom = 70.
     Inom = 5.
     PMUclass = "M"
+    Fs = 50.
     
     #list of exceptions             
     ex_list = []
 
 
     # StdTests instance
-    t = StdTests(Duration,Config,Vnom,Inom,PMUclass)
+    t = StdTests(Duration,Config,Vnom,Inom,PMUclass,Fs)
     
     
     
     #list of tests to be performed
-    func_list = [t.FreqRange,
-                 #t.Magnitude, 
-                 #t.Harm, 
-                 #t.MeasBand, 
+    func_list = [#t.FreqRange,
+                 #t.MagRange, 
+                 #t.Harm,
+                 #t.IHarm
+                 t.MeasBand, 
                  #t.RampFreq, 
                  #t.Step 
                  #t.RepLatency
