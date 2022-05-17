@@ -267,6 +267,11 @@
 				<Item Name="niScope Actual Num Wfms.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Utility/niScope Actual Num Wfms.vi"/>
 				<Item Name="niScope Read WDT.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/niScope Read WDT.vi"/>
 				<Item Name="niScope Multi Read WDT.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/niScope Multi Read WDT.vi"/>
+				<Item Name="hp3458a Configure Measurement.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a Configure Measurement.vi"/>
+				<Item Name="hp3458a Configure Multi-Point.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a Configure Multi-Point.vi"/>
+				<Item Name="hp3458a Initialize With Options.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a Initialize With Options.vi"/>
+				<Item Name="hp3458a Close.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a Close.vi"/>
+				<Item Name="hp3458a IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a IVI Error Converter.vi"/>
 			</Item>
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
@@ -823,6 +828,7 @@
 				<Item Name="DTbl Binary U16 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U16 to Digital.vi"/>
 				<Item Name="DWDT Binary U8 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Binary U8 to Digital.vi"/>
 				<Item Name="DTbl Binary U8 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U8 to Digital.vi"/>
+				<Item Name="IviDigitizer Close.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer Close.vi"/>
 			</Item>
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
@@ -897,6 +903,13 @@
 			</Item>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../Program Files/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="INIInfo.ctl" Type="VI" URL="../NistPluggableModules/Shared/TypeDefs/INIInfo.ctl"/>
+			<Item Name="InitSelectRing.vi" Type="VI" URL="../NistPluggableModules/Shared/PublicMethods/InitSelectRing.vi"/>
+			<Item Name="SaveAs.vi" Type="VI" URL="../NistPluggableModules/Shared/PublicMethods/SaveAs.vi"/>
+			<Item Name="ExtractINIInfo.vi" Type="VI" URL="../NistPluggableModules/Shared/PublicMethods/ExtractINIInfo.vi"/>
+			<Item Name="hp3458a_32.dll" Type="Document" URL="hp3458a_32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 		</Item>
