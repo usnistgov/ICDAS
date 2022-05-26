@@ -44,6 +44,7 @@
 			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../NistPluggableModules/Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
 			<Item Name="Functions.lvlib" Type="Library" URL="../NistPluggableModules/FGen/MemberClasses/Functions.lvlib"/>
 			<Item Name="Visualization.lvlib" Type="Library" URL="../NistPluggableModules/Visualization/Visualization.lvlib"/>
+			<Item Name="Database.lvlib" Type="Library" URL="../NistPluggableModules/Database/Database.lvlib"/>
 		</Item>
 		<Item Name="MyUserEvents" Type="Folder">
 			<Item Name="clUserEventDataType.ctl" Type="VI" URL="../UserEvents/clUserEventDataType.ctl"/>
@@ -73,6 +74,7 @@
 		<Item Name="Ini_lib.lvlib" Type="Library" URL="../LV_Ini/Ini_lib.lvlib"/>
 		<Item Name="Config_class.lvlib" Type="Library" URL="../LV_Config_class/Config_class.lvlib"/>
 		<Item Name="ICDAS_Main.vi" Type="VI" URL="../ICDAS_Main.vi"/>
+		<Item Name="Loop Parameters.ctl" Type="VI" URL="../NistPluggableModules/Visualization/AcPwr/ChromaPowerSupply/Loop Parameters.ctl"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="C63800 IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 IVI Error Converter.vi"/>
@@ -225,7 +227,20 @@
 				<Item Name="niSync Connect Software Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Connect Software Trigger.vi"/>
 				<Item Name="niSync Create Future Time Event.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Create Future Time Event.vi"/>
 				<Item Name="niSync Send Software Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Send Software Trigger.vi"/>
-				<Item Name="Agilent 90000 Series.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Agilent 90000 Series.lvlib"/>
+				<Item Name="chr62000P_32.dll" Type="Document" URL="/&lt;instrlib&gt;/chr62000P/chr62000P_32.dll"/>
+				<Item Name="chr62000P IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P IVI Error Converter.vi"/>
+				<Item Name="Close.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Close.vi"/>
+				<Item Name="Configure Channel.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Configure Channel.vi"/>
+				<Item Name="Configure Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Trigger/Configure Trigger.vi"/>
+				<Item Name="Configure Trigger (Edge).vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Trigger/Configure Trigger (Edge).vi"/>
+				<Item Name="Configure Trigger (TV).vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Trigger/Configure Trigger (TV).vi"/>
+				<Item Name="Configure Trigger Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Trigger/Configure Trigger Mode.vi"/>
+				<Item Name="Configure Trigger Characteristics.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Trigger/Configure Trigger Characteristics.vi"/>
+				<Item Name="Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Initialize.vi"/>
+				<Item Name="chr62000P Set Current Slew.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current Slew.vi"/>
+				<Item Name="chr62000P Set Voltage Slew.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Voltage Slew.vi"/>
+				<Item Name="chr62000P Set Current Slew Infinite.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current Slew Infinite.vi"/>
+				<Item Name="chr62000P  CLS, Clear Status.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P  CLS, Clear Status.vi"/>
 				<Item Name="niScope LabVIEW Error.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Utility/niScope LabVIEW Error.vi"/>
 				<Item Name="niScope trigger source digital.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger source digital.ctl"/>
 				<Item Name="niScope Configure Trigger Edge.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Edge.vi"/>
@@ -234,8 +249,8 @@
 				<Item Name="niScope Configure Trigger Software.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Software.vi"/>
 				<Item Name="niScope trigger window mode.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger window mode.ctl"/>
 				<Item Name="niScope Configure Video Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Video Trigger.vi"/>
-				<Item Name="niScope tv event.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope tv event.ctl"/>
 				<Item Name="niScope polarity.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope polarity.ctl"/>
+				<Item Name="niScope tv event.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope tv event.ctl"/>
 				<Item Name="niScope signal format.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope signal format.ctl"/>
 				<Item Name="niScope Configure Trigger Glitch.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Glitch.vi"/>
 				<Item Name="niScope trigger polarity.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger polarity.ctl"/>
@@ -813,16 +828,26 @@
 				<Item Name="IviScope Actual Record Length.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Actual Record Length.vi"/>
 				<Item Name="IviScope Read Waveform.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Read Waveform.vi"/>
 				<Item Name="nisyscfg.lvlib" Type="Library" URL="/&lt;vilib&gt;/nisyscfg/nisyscfg.lvlib"/>
-				<Item Name="Binary to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDT.llb/Binary to Digital.vi"/>
-				<Item Name="DWDT Binary U32 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Binary U32 to Digital.vi"/>
-				<Item Name="DTbl Binary U32 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U32 to Digital.vi"/>
-				<Item Name="Compress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDT.llb/Compress Digital.vi"/>
-				<Item Name="DTbl Compress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Compress Digital.vi"/>
-				<Item Name="DWDT Compress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Compress Digital.vi"/>
-				<Item Name="DWDT Binary U16 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Binary U16 to Digital.vi"/>
-				<Item Name="DTbl Binary U16 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U16 to Digital.vi"/>
-				<Item Name="DWDT Binary U8 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Binary U8 to Digital.vi"/>
-				<Item Name="DTbl Binary U8 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U8 to Digital.vi"/>
+				<Item Name="Registry RtKey.ctl" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Registry RtKey.ctl"/>
+				<Item Name="Registry SAM.ctl" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Registry SAM.ctl"/>
+				<Item Name="Open Registry Key.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Open Registry Key.vi"/>
+				<Item Name="Registry refnum.ctl" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Registry refnum.ctl"/>
+				<Item Name="Registry View.ctl" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Registry View.ctl"/>
+				<Item Name="STR_ASCII-Unicode.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/STR_ASCII-Unicode.vi"/>
+				<Item Name="Registry WinErr-LVErr.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Registry WinErr-LVErr.vi"/>
+				<Item Name="Registry Handle Master.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Registry Handle Master.vi"/>
+				<Item Name="Query Registry Key Info.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Query Registry Key Info.vi"/>
+				<Item Name="Enum Registry Values Simple.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Enum Registry Values Simple.vi"/>
+				<Item Name="Enum Registry Values.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Enum Registry Values.vi"/>
+				<Item Name="Registry Simplify Data Type.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Registry Simplify Data Type.vi"/>
+				<Item Name="Close Registry Key.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Close Registry Key.vi"/>
+				<Item Name="NI_Database_API.lvlib" Type="Library" URL="/&lt;vilib&gt;/addons/database/NI_Database_API.lvlib"/>
+				<Item Name="GOOP Object Repository Method.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/_goopsup.llb/GOOP Object Repository Method.ctl"/>
+				<Item Name="GOOP Object Repository Statistics.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/_goopsup.llb/GOOP Object Repository Statistics.ctl"/>
+				<Item Name="GOOP Object Repository.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/_goopsup.llb/GOOP Object Repository.vi"/>
+				<Item Name="NI_Data Type.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/Data Type/NI_Data Type.lvlib"/>
+				<Item Name="LVPoint32TypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVPoint32TypeDef.ctl"/>
+				<Item Name="Flatten To JSON String.vi" Type="VI" URL="/&lt;vilib&gt;/addons/_JKI.lib/Serialization/JSON/Library/Flatten To JSON String.vi"/>
 			</Item>
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
@@ -889,13 +914,17 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="SensorQueue.ctl" Type="VI" URL="../NistPluggableModules/Analysis/AnalysisPlugins/AnalysisPluginBaseClass/Typedefs/SensorQueue.ctl"/>
+			<Item Name="Advapi32.dll" Type="Document" URL="Advapi32.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="niScope_32.dll" Type="Document" URL="niScope_32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="niTClk.dll" Type="Document" URL="niTClk.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../Program Files/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
