@@ -9,4 +9,4 @@ Test Configuration 2.INI File Path = "UserFiles-PMU\\Plugins\\FGen\\NiPxi6733\\P
 Test Configuration 3.Script Name = "Script"
 Test Configuration 3.INI File Path = "UserFiles-PMU\\Plugins\\Digitizer\\NiDaqMx\\PMU (SteadyState).ini"
 Test Configuration 4.Script Name = "Script"
-Test Configuration 4.INI File Path = "UserFiles-PMU\\Plugins\\Analysis\\PmuAnalysis\\Pmu (SteadyState).ini"
+Test Configuration 4.INI File Path = "UserFiles-PMU\\Plugins\\Analysis\\CorrFactor\\CorrFactor.ini"
