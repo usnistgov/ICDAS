@@ -276,6 +276,9 @@
 				<Item Name="chr62000P_32.dll" Type="Document" URL="/&lt;instrlib&gt;/chr62000P/chr62000P_32.dll"/>
 				<Item Name="chr62000P IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P IVI Error Converter.vi"/>
 				<Item Name="niSync Set Time Reference (802.1AS).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Set Time Reference (802.1AS).vi"/>
+				<Item Name="PPS_UPC Error Query.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Error Query.vi"/>
+				<Item Name="PPS_UPC VISA Init.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC VISA Init.vi"/>
+				<Item Name="PPS_UPC Utility Instrument Serial Setup.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Utility Instrument Serial Setup.vi"/>
 			</Item>
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
@@ -333,6 +336,9 @@
 				<Item Name="Write Key (Variant)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Write Key (Variant)__ogtk.vi"/>
 				<Item Name="Write Section Cluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Write Section Cluster__ogtk.vi"/>
 				<Item Name="Socket.lvlib" Type="Library" URL="/&lt;userlib&gt;/NIST/Socket Class/Classes/Socket.lvlib"/>
+				<Item Name="Convert EOLs__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/Convert EOLs__ogtk.vi"/>
+				<Item Name="Convert EOLs (String)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/Convert EOLs (String)__ogtk.vi"/>
+				<Item Name="Convert EOLs (String Array)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/Convert EOLs (String Array)__ogtk.vi"/>
 			</Item>
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="8.6CompatibleGlobalVar.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/config.llb/8.6CompatibleGlobalVar.vi"/>
