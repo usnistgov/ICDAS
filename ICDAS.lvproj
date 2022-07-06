@@ -76,6 +76,7 @@
 		<Item Name="Ini_lib.lvlib" Type="Library" URL="../LV_Ini/Ini_lib.lvlib"/>
 		<Item Name="Config_class.lvlib" Type="Library" URL="../LV_Config_class/Config_class.lvlib"/>
 		<Item Name="ICDAS_Main.vi" Type="VI" URL="../ICDAS_Main.vi"/>
+		<Item Name="ConfigMode.ctl" Type="VI" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/ChromaAcLoadClass/TypeDefs/ConfigMode.ctl"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="C63800 Get PF Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get PF Programmable Range.vi"/>
