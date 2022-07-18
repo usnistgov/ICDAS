@@ -1,0 +1,77 @@
+; ###################################################################################################
+; Start any line with semicolon (;) character to make that line a comment
+; Nothing is case-sensitive
+; Delimiter is based on extension: .txt = "\t",  .csv = "," .prn = " " (space), any other = "\t"
+; Fields must be enclosed in quotes ("") if the field includes a delimiter.
+; Any or all other fields can be enclosed in "".
+;
+; ###################################################################################################
+; Use #CONTROL commands to define file behavior
+; #CONTROL commands must be in the first column (column A)
+; #CONTROL commands (unless noted) may be anywhere in the file and may be repeated if appropriate. 
+; The following #CONTROL commands are available.  The default is used if the #CONTROL command is not used.
+;
+; #MODE(<text>)
+;          NOTE: This MUST precede any operational line.
+;          where <text> is OFF, STANDBY, CHARGE, DISCHARGE, CHARGE_DISCHARGE or BATTERY.
+;          Default is CHARGE_DISCHARGE.  CHARGE_DISCHARGE will choose the mode based on the sign of the current.
+;
+; #CHARGE_IS_NEGATIVE(<bool>)
+;          NOTE: This MUST precede any operational line and will generate an error if repeated.
+;          where <bool> is TRUE or FALSE. Default is FALSE.
+;
+; #CONTROL command is found.
+; #A_REF(<value>)
+;          where <value> is the reference for current (A) expressed as a percent. Default is system max current.
+; #V_REF(<value>)
+;          where <value> is the reference for voltage (V) expressed as a percent. Default is system max voltage.
+; #W_REF(<value>)
+;          where <value> is the reference for power (W) expressed as a percent. Default is system max power.
+; #R_REF(<value>)
+;          where <value> is the reference for resistance (ohms) expressed as a percent. Default is system max resistance.
+; #AH_REF(<value>)
+;          where <value> is the reference for amp hours (Ah) expressed as a percent. Default is 0.0.
+; #KWH_REF(<value>)
+;          where <value> is the reference for kilowatt hours (kWh) expressed as a percent. Default is 0.0.
+; #T_REF(<value>)
+;          where <value> is the reference for time (s) expressed as a percent. Default is 0.0.
+;
+; ###################################################################################################
+; Column headings must be defined.  The column heading row is the first row that is not a comment,
+; or or a #CONTROL command row.
+; Columns are not required and can be in any order.
+; ###################################################################################################
+; |----------------|-----------------|----------------|----------------+----------------|----------------+----------------+----------------+----------------+----------------+----------------|----------------+----------------+----------------|----------------|----------------|
+; | WAIT_TRIG      |  MEAS_RESET     | MEAS_INIT      | V_SLEW         | A_SLEW         | P_SLEW         | R_SLEW         | MODE           | VOLTAGE        | CURRENT        | POWER          | RESISTANCE     | WAIT_SLEW      | WAIT_ON_MODE   | WAIT_ON_VALUE  | WAIT_ON_TC     | DELAY          | <text>         |
+; | TRUE or        |  ALL or         | IMM or         | MIN or         | MIN or         | MIN or         | MIN or         | see #MODE      | <volts> or     | <amps> or      | <watts> or     | <ohms> or      | TRUE or        | V_GREATER_THAN | <value> or     | <seconds> or   | <seconds> or   |                |
+; | FALSE          |  <int>          | TRIG           | MAX or         | MAX or         | MAX or         | MAX or         | for args       | <value>%       | <value>%       | <value>%       | <value>%       | FALSE          | V_LESS_THAN    | <value>%       | <seconds>%     | <value>%       |                |
+; |                |                 |                | <slew>         | <slew>         | <slew>         | <slew>         |                |                |                |                |                |                | A_GREATER_THAN |                |                |                |                |
+; |                |                 |                | NOTE: All Slew modes rqd (V,A,P & R)             |                |                |                |                |                | A_LESS_THAN    |                |                |                |                |                |                |
+; |                |                 |                |                |                |                |                |                |                |                |                |                |                | W_GREATER_THAN |                |                |                |                |
+; |                |                 |                |                |                |                |                |                |                |                |                |                |                | W_LESS_THAN    |                |                |                |                |
+; | If blank =     |  If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     | If blank =     |
+; | FALSE          |  {none}         | {none}         | {no change}    | {no change}    | {no change}    | {no change}    | {no change}    | {no limit}     | {no limit}     | {no limit}     | {no limit}     | FALSE          | {ignored}      | 0.0            | 0.0            | 0.0            | {blank}        |
+;
+;
+#CHARGE_IS_NEGATIVE(FALSE)
+WAIT_TRIG,MEAS_RESET,MEAS_INIT,V_SLEW,A_SLEW,P_SLEW,R_SLEW,MODE,VOLTAGE,CURRENT,POWER,RESISTANCE,WAIT_SLEW,WAIT_ON_MODE,WAIT_ON_VALUE,WAIT_ON_TC,WAIT_DELAY,COMMENT
+,,,60000.000000,40000.000000,10000.000000,50000.000000,,,,,,,A_LESS_THAN,3.450000,0.000000,
+,,,,,,,CHARGE,38.200001,5.000000,1000.000000,2.000000,,,,,0.000000
+,,,,,,,,,,,,,A_GREATER_THAN,3.500000,0.000000,
+,,,,,,,CHARGE,37.584999,5.000000,1000.000000,2.000000,,,,,0.000000
+,,,,,,,,,,,,,A_GREATER_THAN,3.550000,0.000000,
+,,,,,,,CHARGE,36.970001,5.000000,1000.000000,2.000000,,,,,0.000000
+,,,,,,,,,,,,,A_GREATER_THAN,3.600000,0.000000,
+,,,,,,,CHARGE,36.355000,5.000000,1000.000000,2.000000,,,,,0.000000
+,,,,,,,,,,,,,A_GREATER_THAN,3.650000,0.000000,
+,,,,,,,CHARGE,35.740002,5.000000,1000.000000,2.000000,,,,,0.000000
+,,,,,,,,,,,,,A_GREATER_THAN,3.700000,0.000000,
+,,,,,,,CHARGE,35.125000,5.000000,1000.000000,2.000000,,,,,0.000000
+,,,,,,,,,,,,,A_GREATER_THAN,3.750000,0.000000,
+,,,,,,,CHARGE,34.509998,5.000000,1000.000000,2.000000,,,,,0.000000
+,,,,,,,,,,,,,A_GREATER_THAN,3.800000,0.000000,
+,,,,,,,CHARGE,33.895000,5.000000,1000.000000,0.000000,,,,,0.000000
+,,,,,,,,,,,,,A_GREATER_THAN,3.850000,0.000000,
+,,,,,,,CHARGE,33.279999,5.000000,1000.000000,2.000000,,,,,0.000000
+,,,,,,,,,,,,,A_GREATER_THAN,3.900000,0.000000,
+,,,,,,,CHARGE,32.665001,5.000000,1000.000000,2.000000,,,,,0.000000
