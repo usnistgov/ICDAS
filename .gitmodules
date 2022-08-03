@@ -1,12 +1,12 @@
 [submodule "LV_Config_class"]
 	path = LV_Config_class
-	url = R:/LV_Config_class.git
+	url = https://github.com/usnistgov/LV_Config_class.git
 [submodule "NistPluggableModules"]
 	path = NistPluggableModules
-	url = R:/NistPluggableModules.git
+	url = https://github.com/usnistgov/NistPluggableModules.git
 [submodule "LV_Ini"]
 	path = LV_Ini
-	url = R:/LV_Ini.git
+	url = https://github.com/usnistgov/LV_Ini.git
 [submodule "LV_TestAutomation"]
 	path = LV_TestAutomation
-	url = R:/LV_TestAutomation.git
+	url = https://github.com/usnistgov/LV_TestAutomation.git
