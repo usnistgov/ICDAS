@@ -76,7 +76,7 @@
 		<Item Name="Ini_lib.lvlib" Type="Library" URL="../LV_Ini/Ini_lib.lvlib"/>
 		<Item Name="Config_class.lvlib" Type="Library" URL="../LV_Config_class/Config_class.lvlib"/>
 		<Item Name="ICDAS_Main.vi" Type="VI" URL="../ICDAS_Main.vi"/>
-		<Item Name="ConfigMode.ctl" Type="VI" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/ChromaAcLoadClass/TypeDefs/ConfigMode.ctl"/>
+		<Item Name="Change Element of Array of Clusters - SubVI.vi" Type="VI" URL="../../../../jortiz/Downloads/Change Element of Array of Clusters - SubVI.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="C63800 Get PF Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get PF Programmable Range.vi"/>
@@ -263,7 +263,6 @@
 				<Item Name="hp3458a Configure Multi-Point.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a Configure Multi-Point.vi"/>
 				<Item Name="hp3458a Initialize With Options.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a Initialize With Options.vi"/>
 				<Item Name="hp3458a Close.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a Close.vi"/>
-				<Item Name="hp3458a IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a IVI Error Converter.vi"/>
 				<Item Name="chr62000P Set Current Slew.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current Slew.vi"/>
 				<Item Name="chr62000P Set Voltage Slew.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Voltage Slew.vi"/>
 				<Item Name="chr62000P Set Current Slew Infinite.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current Slew Infinite.vi"/>
@@ -280,6 +279,11 @@
 				<Item Name="PPS_UPC Error Query.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Error Query.vi"/>
 				<Item Name="PPS_UPC VISA Init.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC VISA Init.vi"/>
 				<Item Name="PPS_UPC Utility Instrument Serial Setup.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Utility Instrument Serial Setup.vi"/>
+				<Item Name="niScope Configure Trigger Glitch.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Glitch.vi"/>
+				<Item Name="niScope trigger polarity.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger polarity.ctl"/>
+				<Item Name="niScope glitch condition.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope glitch condition.ctl"/>
+				<Item Name="niScope Configure Trigger Runt.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Runt.vi"/>
+				<Item Name="niScope Configure Trigger Width.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Width.vi"/>
 			</Item>
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
@@ -934,12 +938,6 @@
 			<Item Name="niTClk.dll" Type="Document" URL="niTClk.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
-				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
-			</Item>
-			<Item Name="hp3458a_32.dll" Type="Document" URL="hp3458a_32.dll">
-				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
-			</Item>
 			<Item Name="phase_diff.vi" Type="VI" URL="../NistPluggableModules/Analysis/AnalysisPlugins/Libraries/NIST_hp3458_sampling_distribution.llb/phase_diff.vi"/>
 			<Item Name="lockin_simulate.vi" Type="VI" URL="../NistPluggableModules/Analysis/AnalysisPlugins/Libraries/NIST_hp3458_sampling_distribution.llb/lockin_simulate.vi"/>
 			<Item Name="dSineCosine dw2.vi" Type="VI" URL="../NistPluggableModules/Analysis/AnalysisPlugins/Libraries/NIST_hp3458_sampling_distribution.llb/dSineCosine dw2.vi"/>
@@ -956,12 +954,15 @@
 			<Item Name="Advapi32.dll" Type="Document" URL="Advapi32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="Loop Parameters.ctl" Type="VI" URL="../NistPluggableModules/Visualization/AcPwr/ChromaPowerSupply/Loop Parameters.ctl"/>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="NHRDCPowerModule.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
