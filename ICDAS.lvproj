@@ -281,6 +281,8 @@
 				<Item Name="niScope glitch condition.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope glitch condition.ctl"/>
 				<Item Name="niScope Configure Trigger Runt.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Runt.vi"/>
 				<Item Name="niScope Configure Trigger Width.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Width.vi"/>
+				<Item Name="niSync Set Time Reference (802.1AS).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Set Time Reference (802.1AS).vi"/>
+				<Item Name="hp3458a IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a IVI Error Converter.vi"/>
 			</Item>
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
@@ -934,9 +936,6 @@
 			<Item Name="niTClk.dll" Type="Document" URL="niTClk.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="hp3458a_32.dll" Type="Document" URL="hp3458a_32.dll">
-				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
-			</Item>
 			<Item Name="phase_diff.vi" Type="VI" URL="../NistPluggableModules/Analysis/AnalysisPlugins/Libraries/NIST_hp3458_sampling_distribution.llb/phase_diff.vi"/>
 			<Item Name="lockin_simulate.vi" Type="VI" URL="../NistPluggableModules/Analysis/AnalysisPlugins/Libraries/NIST_hp3458_sampling_distribution.llb/lockin_simulate.vi"/>
 			<Item Name="dSineCosine dw2.vi" Type="VI" URL="../NistPluggableModules/Analysis/AnalysisPlugins/Libraries/NIST_hp3458_sampling_distribution.llb/dSineCosine dw2.vi"/>
@@ -957,7 +956,16 @@
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="NHRDCPowerModule.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="hp3458a_32.dll" Type="Document" URL="hp3458a_32.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="Device(s)Settings_old.ctl" Type="VI" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/NHRGridSimClass/TypeDefs/Device(s)Settings_old.ctl"/>
+			<Item Name="NHRGrid_Hardware.ctl" Type="VI" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/NHRGridSimClass/TypeDefs/NHRGrid_Hardware.ctl"/>
+			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
