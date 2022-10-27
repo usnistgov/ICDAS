@@ -50,6 +50,7 @@ def main():
     #print(ChromaCfg)
     ChromaCfg['Device Properties']['Phases'][0]['Config']['Load Voltage (V/Vrms)'] = float(10)
     error = lta.__set__('AcPwr.ChromaAcLoad.SolarArraySim,Config', ChromaCfg)
+    error_handler(error)
 
     # all done
     lta.close
