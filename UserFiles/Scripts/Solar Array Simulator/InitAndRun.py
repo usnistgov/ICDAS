@@ -6,6 +6,7 @@ voltage limit and the Chroma is operating as a constant voltage load.
 """
 # -----------------------  Labview Test Autppmation modules ------------------
 from lta import Lta
+from module_class import NPModuleAcPwr
 import sys
 from lta_err import Lta_Error
 from lta_err import LV_to_Py_Error
@@ -13,9 +14,11 @@ from lta_err import LV_to_Py_Error
 # python modules imports
 import numpy
 
+
 # a custom exception class
 class LtaError(Exception):
     pass
+
 
 def main():
     # ------------------- following code must be in all scripts--------------------
@@ -33,31 +36,26 @@ def main():
     # current source and source current until the Voltage Setting has been reached.  The Chroma load is set up as a constant
     # voltage load.  To act as a Solar array, the NHRDC voltage control needs to be disabled so the voltage will follow the
     # Chroma load acting as an MPPT
-    # try:
-        # ---------------------Script code goes here------------------------------------
-        # ChromaCfg = lta.__get__('AcPwr.ChromaAcLoad.SolarArraySim,Config')
-        # print(ChromaCfg)
-        # error = lta.__set__('AcPwr.ChromaAcLoad.SolarArraySim,Config', ChromaCfg)
 
+    # Instantiate NPModuleAcPwr instances for the NHRDC and the Chroma Load
+    nhr_dc = NPModuleAcPwr(class_type='NHRDCPower', instance="SolarArraySim", lta=lta )
+    chroma_load = NPModuleAcPwr(class_type='ChromaAcLoad', instance='SolarArraySim', lta=lta)
 
-    NhrDcConfig = lta.__get__('AcPwr.NHRDCPower.SolarArraySim,Config')
-    #print(NhrDcConfig)
-    NhrDcConfig['NHRDC']['Modules'][0]['Device(s)Settings']['OutputSettings']['Enable Voltage'] = False
-    error = lta.__set__('AcPwr.NHRDCPower.SolarArraySim,Config', NhrDcConfig)
-    error_handler(error)
+    # when the Init and Run scripts complete, the nhr_dc will have voltage control enabled.
+    nhr_dc.get_config()
+    nhr_dc.config['NHRDC']['Modules'][0]['Device(s)Settings']['OutputSettings']['Enable Voltage'] = False
+    nhr_dc.set_config()
 
-    ChromaCfg = lta.__get__('AcPwr.ChromaAcLoad.SolarArraySim,Config')
-    #print(ChromaCfg)
-    ChromaCfg['Device Properties']['Phases'][0]['Config']['Load Voltage (V/Vrms)'] = float(10)
-    error = lta.__set__('AcPwr.ChromaAcLoad.SolarArraySim,Config', ChromaCfg)
+    # get measurements from the Chroma Load
+    chroma_load.get_config()
+    print(chroma_load.config)
+    # chroma_load.config['Device Properties']['Phases'][0]['Config']['Load Voltage (V/Vrms)'] = 10.0
+    # chroma_load.set_config()
+    # chroma_load.get_meas()
+    # print(chroma_load.meas)
 
     # all done
     lta.close
-
-def error_handler(error):
-    if error['error out']['status']:
-        raise LV_to_Py_Error
-
 
 if __name__ == "__main__":
     main()
