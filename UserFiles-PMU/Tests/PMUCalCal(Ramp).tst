@@ -1,0 +1,10 @@
+[Test Configuration]
+Test Configuration.<size(s)> = "4"
+Test Configuration 0.Script Name = "Script"
+Test Configuration 0.INI File Path = "UserFiles-PMU\\Plugins\\Sync\\PXI_MultiTrig\\PMUCalCal.ini"
+Test Configuration 1.Script Name = "Script"
+Test Configuration 1.INI File Path = "UserFiles-PMU\\Plugins\\Digitizer\\NiDaqMx\\PMUCalCal (Ramp).ini"
+Test Configuration 2.Script Name = "Script"
+Test Configuration 2.INI File Path = "UserFiles-PMU\\Plugins\\Sensor\\C37.118 PMU\\C37.118_PMU .93.ini"
+Test Configuration 3.Script Name = "Script"
+Test Configuration 3.INI File Path = "UserFiles-PMU\\Plugins\\Analysis\\PmuAnalysis\\PMUCalCal (Ramp).ini"
