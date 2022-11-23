@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-import time
+#import time
 from lta import Lta
 import sys
 from lta_err import Lta_Error
+import module_class as M
 from collections import OrderedDict
 import numpy as np
 
@@ -38,8 +39,20 @@ class StdTests(object):
         return Xm,Fin,Pin,Fh,Ph,Kh,Fa,Ka,Fx,Kx,Rf,KaS,KxS,KfS,KrS
     
       #constructor
-    #def __init__(self,Fs,F0,Fsamp,Vnom,Inom,Duration,PMUclass,lta,ntries,secwait,ecode):
     def __init__(self,Duration,Config,Vnom,Inom,PMUclass,Fs):
+        
+        self.lta = Lta("127.0.0.1",60100)    # all scripts must create  an Lta object
+        
+        try:
+            self.lta.connect()                   # connect to the Labview Host
+            
+        except Exception as ex:
+            err = Lta_Error(ex,sys.exc_info())  #format a labview error
+            self.lta.send_error(err,3,'Abort')       #send the error to labview for display
+            self.lta.close()
+            print (err)        
+            
+        
         try: 
             if PMUclass != "M" and PMUclass != "P":
                 raise Exception('Error: Unrecognizable PMU class')
@@ -57,6 +70,10 @@ class StdTests(object):
             self.ntries = 30
             self.secwait = 60
             self.ecode = {5605}  #set of error codes under which we need to try again
+            
+            self.fgen = None
+            self.analysis = None
+
 
         except Exception as ex:
             raise ex   
@@ -66,42 +83,62 @@ class StdTests(object):
         try:
             """ Sets initial default values to the framework"""
             print("Setting default params")
-            #Setting Duration
-        
+            
         
             #Analysis.Duration
-            Error=lta.__set__('Analysis.Duration',{None: self.Duration})
+            self.analysis.duration = {None: self.Duration}
+            self.analysis.set_duration
             
             #Analysis.Config
-            Error=lta.__set__('Analysis.Config',{None: self.Config})
+            self.analysis.config = {None: self.Config}
+            self.analysis.set_config()
+            #Error=lta.__set__('Analysis.PmuAnalysis.,Config',{None: self.Config})
             
             #Setting Waveform Params
-            WfrmParams = lta.__get__('FGen.FunctionParams')
+            self.fgen.get_params()
+            #WfrmParams = lta.__get__('FGen.NiPxi6733.,FunctionParams')
             
             #useful indices
             Xm = 0; Fin = 1; Pin = 2; Fh = 3
             VA = 0; VB = 1; VC = 2; IA = 3; IB = 4; IC = 5;
             
             # default values
-            WfrmParams[None][Xm][VA:VC+1] = float(self.Vnom)
-            WfrmParams[None][Xm][IA:IC+1] = float(self.Inom)
-            WfrmParams[None][Fin][:] = self.Config['F0']
-            WfrmParams[None][Pin][VA] = WfrmParams[None][Pin][IA] = float(0.)
-            WfrmParams[None][Pin][VB] = WfrmParams[None][Pin][IB] = float(-120.)
-            WfrmParams[None][Pin][VC] = WfrmParams[None][Pin][IC] = float(120.)
-            WfrmParams[None][Fh:][:] = float(0.) #all remaining parameters are null
-            Error = lta.__set__('FGen.FunctionParams',WfrmParams)
+            self.fgen.params['element 0'][Xm][VA:VC+1] = float(self.Vnom)
+            self.fgen.params['element 0'][Xm][IA:IC+1] = float(self.Inom)
+            self.fgen.params['element 0'][Fin][:] = self.Config['F0']
+            self.fgen.params['element 0'][Pin][VA] = self.fgen.params['element 0'][Pin][IA] = float(0.)
+            self.fgen.params['element 0'][Pin][VB] = self.fgen.params['element 0'][Pin][IB] = float(-120.)
+            self.fgen.params['element 0'][Pin][VC] = self.fgen.params['element 0'][Pin][IC] = float(120.)
+            self.fgen.params['element 0'][Fh:][:] = float(0.) #all remaining parameters are null   
+            self.fgen.set_params()
+            
+            # WfrmParams[None][Xm][VA:VC+1] = float(self.Vnom)
+            # WfrmParams[None][Xm][IA:IC+1] = float(self.Inom)
+            # WfrmParams[None][Fin][:] = self.Config['F0']
+            # WfrmParams[None][Pin][VA] = WfrmParams[None][Pin][IA] = float(0.)
+            # WfrmParams[None][Pin][VB] = WfrmParams[None][Pin][IB] = float(-120.)
+            # WfrmParams[None][Pin][VC] = WfrmParams[None][Pin][IC] = float(120.)
+            # WfrmParams[None][Fh:][:] = float(0.) #all remaining parameters are null
+            # Error = lta.__set__('FGen.NiPxi6733.,FunctionParams',WfrmParams)
 
             print("Initial Values have been set")
 
         except Exception as ex:
-            print Error
             raise ex
 
 
 # Frequency Range tests
+    """
+    Uses the module instances:
+        FGen.NiPxi65733.PMU (SteadyState)
+        Analysis.PmuAnalysis.PMU (SteadyState)
+    
+    """
     def FreqRange(self):
         print ("Performing Freequency Range Tests")
+        
+        self.fgen = M.NPModuleFGen(class_type='NiPxi6733',instance='PMU (SteadyState)',lta=self.lta)
+        self.analysis = M.NPModuleAnalysis(class_type='PmuAnalysis',instance='PMU (SteadyState)',lta=self.lta)
         
         # Start ans stop frequencies dependi on PMU Class 
         range = 5
@@ -117,22 +154,24 @@ class StdTests(object):
         try:          
             try:
                 self.set_init()     # set up the initial parameters
-                WfrmParams = lta.__get__('FGen.FunctionParams')
+                #WfrmParams = lta.__get__('FGen.NiPxi6733.,FunctionParams')
                     
             except Exception as ex:
                 raise ex
                                 
             while freq<fStop: 
-                print 'freq = ',freq
-                WfrmParams[None][Fin][:] = float(freq)
+                print('freq = ',freq)
+                self.fgen.params['element 0'][Fin][:] = float(freq)
+                #WfrmParams[None][Fin][:] = float(freq)
+                self.fgen.set_params()
                 try:
-                    Error = lta.__set__('FGen.FunctionParams',WfrmParams)
-                    lta.s.settimeout(200)   
-                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
-                    lta.s.settimeout(10)                       
+                    #Error = lta.__set__('FGen.NiPxi6733.,FunctionParams',WfrmParams)
+                    self.lta.s.settimeout(200)   
+                    Error = self.lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    self.lta.s.settimeout(10)                       
                 except Exception as ex:
                     print (Error)
-                    raise type(ex)(str(freq)+ex.message) 
+                    raise type(ex)(str(freq)+ex) 
                     
                 freq += incr
                              
@@ -141,7 +180,17 @@ class StdTests(object):
  
 # Magnitude Range Tests
     def MagRange(self):
+        """
+        Uses the module instances:
+        FGen.NiPxi65733.PMU (SteadyState)
+        Analysis.PmuAnalysis.PMU (SteadyState)
+    
+        """        
         print ("Performing Magnitude Range Tests") 
+        
+        self.fgen = M.NPModuleFGen(class_type='NiPxi6733',instance='PMU (SteadyState)',lta=self.lta)
+        self.analysis = M.NPModuleAnalysis(class_type='PmuAnalysis',instance='PMU (SteadyState)',lta=self.lta)        
+        
         Xm = 0;   # Magnitude index into WfrmParams
         incr = 0.1;
         iMag = 0.1  
@@ -151,27 +200,29 @@ class StdTests(object):
         try:   
             try:
                 self.set_init()
-                WfrmParams = lta.__get__('FGen.FunctionParams')
-                A = WfrmParams[None][Xm].copy()
+                #WfrmParams = lta.__get__('FGen.NiPxi6733.,FunctionParams')
+                A = self.fgen.params['element 0'][Xm].copy()
             
             except Exception as ex:
                 raise ex
                 
             while iMag < 2.1:
-                #print ('iMag = ',iMag, 'VMag = ',vMag)                
-                WfrmParams[None][Xm][0:3] = float(vMag)*A[0:3]
-                WfrmParams[None][Xm][3:7] = float(iMag)*A[3:7]
-                #print A
-                print 'Magnitudes: ',WfrmParams[None][Xm]
+                #print ('iMag = ',iMag, 'VMag = ',vMag)   
+                self.fgen.params['element 0'][Xm][0:3] = float(vMag)*A[0:3]
+                self.fgen.params['element 0'][Xm][3:7] = float(iMag)*A[3:7]                
+                #WfrmParams[None][Xm][0:3] = float(vMag)*A[0:3]
+                #WfrmParams[None][Xm][3:7] = float(iMag)*A[3:7]
+                print('Magnitudes: ',self.fgen.params['element 0'][Xm])
                 iMag += incr
                 if vMag < 1.2:
                     vMag += incr
                     
                 try:
-                    Error = lta.__set__('FGen.FunctionParams',WfrmParams)
-                    lta.s.settimeout(200)   
-                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
-                    lta.s.settimeout(10)                       
+                    #Error = lta.__set__('FGen.NiPxi6733.,FunctionParams',WfrmParams)
+                    self.fgen.set_params()
+                    self.lta.s.settimeout(200)   
+                    Error = self.lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    self.lta.s.settimeout(10)                       
                 except Exception as ex:
                     print (Error)
                     raise type(ex)(ex.message)                     
@@ -181,7 +232,16 @@ class StdTests(object):
            
 # Harmonic Interfereing Signals test
     def Harm(self):
+        """
+        Uses the module instances:
+        FGen.NiPxi65733.PMU (SteadyState)
+        Analysis.PmuAnalysis.PMU (SteadyState)
+    
+        """                
         print ("Performing Harmonic Intefering Signal Tests")
+        
+        self.fgen = M.NPModuleFGen(class_type='NiPxi6733',instance='PMU (SteadyState)',lta=self.lta)
+        self.analysis = M.NPModuleAnalysis(class_type='PmuAnalysis',instance='PMU (SteadyState)',lta=self.lta)                
 
         range = 50      # number of harmonics to test
         fund = self.Config['F0'] 
@@ -194,21 +254,27 @@ class StdTests(object):
         try:
             try:
                 self.set_init();
-                WfrmParams = lta.__get__('FGen.FunctionParams')
-                WfrmParams[None][Ph][:] = [0, -120, 120, 0, -120, 120 ]
-                WfrmParams[None][Kh][:] = float(0.1)
+                #WfrmParams = lta.__get__('FGen.NiPxi6733.,FunctionParams')
+                self.fgen.params['element 0'][Ph][:] = [0, -120, 120, 0, -120, 120 ]
+                self.fgen.params['element 0'][Kh][:] = float(0.1)
+
+                # WfrmParams = lta.__get__('FGen.NiPxi6733.,FunctionParams')
+                # WfrmParams[None][Ph][:] = [0, -120, 120, 0, -120, 120 ]
+                # WfrmParams[None][Kh][:] = float(0.1)
                 
             except Exception as ex:
                 raise ex
                 
             while hFreq<=fund*range:
-                print 'harmonic number =', incr, ' frequency = ',hFreq
-                WfrmParams[None][Fh][:] = float(hFreq)
+                print('harmonic number =', incr, ' frequency = ',hFreq)
+                self.fgen.params['element 0'][Fh][:] = float(hFreq)
+                self.fgen.set_params()
+                #WfrmParams[None][Fh][:] = float(hFreq)
                 try:
-                    Error = lta.__set__('FGen.FunctionParams',WfrmParams)
-                    lta.s.settimeout(200)                       
-                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
-                    lta.s.settimeout(10)                            
+                    #Error = lta.__set__('FGen.NiPxi6733.,FunctionParams',WfrmParams)
+                    self.lta.s.settimeout(200)                       
+                    Error = self.lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    self.lta.s.settimeout(10)                            
                                                                            
                 except Exception as ex:
                     print (Error)
@@ -222,7 +288,18 @@ class StdTests(object):
 
  # Interharmonic Intefering Signals test
     def IHarm(self):
+        """
+        Uses the module instances:
+        FGen.NiPxi65733.PMU (SteadyState)
+        Analysis.PmuAnalysis.PMU (SteadyState)
+    
+        """           
         print("Performing Interharmonic Intefering Signals Tests")
+        
+        self.fgen = M.NPModuleFGen(class_type='NiPxi6733',instance='PMU (SteadyState)',lta=self.lta)
+        self.analysis = M.NPModuleAnalysis(class_type='PmuAnalysis',instance='PMU (SteadyState)',lta=self.lta)                
+
+        
 
         Fh = 3          # index of harmonic frequency into WfrmParams
         Ph = 4          # index of Harmonic Phase in WfrmParams
@@ -231,12 +308,14 @@ class StdTests(object):
         try:
             try:
                 self.set_init();
-                WfrmParams = lta.__get__('FGen.FunctionParams')
+                #WfrmParams = lta.__get__('FGen.NiPxi6733.,FunctionParams')
             except Exception as ex:
                 raise ex
                 
-            WfrmParams[None][Ph][:] = [0, -120, 120, 0, -120, 120 ]
-            WfrmParams[None][Kh][:] = float(0.1)
+            self.fgen.params['element 0'][Ph][:] = [0, -120, 120, 0, -120, 120 ]
+            self.fgen.params['element 0'][Kh][:] = float(0.1)
+            # WfrmParams[None][Ph][:] = [0, -120, 120, 0, -120, 120 ]
+            # WfrmParams[None][Kh][:] = float(0.1)
             iFreq = self.Config['F0']
             iFreqList = []
             incr = 0
@@ -263,13 +342,15 @@ class StdTests(object):
                 
             #iterate over the list of iterharmonic frequencies
             for iFreq in iFreqList:
-                print 'Interharmonic Frequency = ', iFreq
-                WfrmParams[None][Fh][:] = float(iFreq)
+                print('Interharmonic Frequency = ', iFreq)
+                self.fgen.params['element 0'][Fh][:] = float(iFreq)
+                self.fgen.set_params()
+                #WfrmParams[None][Fh][:] = float(iFreq)
                 try:
-                    Error = lta.__set__('FGen.FunctionParams',WfrmParams)
-                    lta.s.settimeout(200)                       
-                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
-                    lta.s.settimeout(10)                            
+                    #Error = self.lta.__set__('FGen.NiPxi6733.,FunctionParams',WfrmParams)
+                    self.lta.s.settimeout(200)                       
+                    Error = self.lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    self.lta.s.settimeout(10)                            
                                                                            
                 except Exception as ex:
                     print (Error)
@@ -279,7 +360,17 @@ class StdTests(object):
             raise type(ex) ("Interharmonic Test Failure:"+ex.message)
 # Measurement bandwidth (modulation)    
     def MeasBand(self):
+        """
+        Uses the module instances:
+        FGen.NiPxi65733.PMU (Modulation)
+        Analysis.PmuAnalysis.PMU (Modulation)
+    
+        """              
         print("Performing Measurement Bandwidth (Modulation) Tests")
+        
+        self.fgen = M.NPModuleFGen(class_type='NiPxi6733',instance='PMU (Modulation)',lta=self.lta)
+        self.analysis = M.NPModuleAnalysis(class_type='PmuAnalysis',instance='PMU (Modulation)',lta=self.lta)                
+        
         
         # Range of modulation frequency
         if self.PMUclass == "M":
@@ -301,72 +392,91 @@ class StdTests(object):
         
         try:
             self.set_init()
-            WfrmParams = lta.__get__('FGen.FunctionParams')
+            #WfrmParams = lta.__get__('FGen.NiPxi6733.,FunctionParams')
         except Exception as ex:
             raise type(ex)("Measurement Bandwidth Test - unable to get Waveform Parameters . " +ex.message)
             
         # Amplitude Modulation
-        WfrmParams[None][Kx][:] = float(0.1)
-        WfrmParams[None][Ka][:] = float(0)
+        self.fgen.params['element 0'][Kx][:] = float(0.1)
+        self.fgen.params['element 0'][Kx][:] = float(0.1)
+        # WfrmParams[None][Ka][:] = float(0)
+        # WfrmParams[None][Ka][:] = float(0)
         fmod = range(1,int(Fmax*10),2)+[int(Fmax*10)]
         
         # loop through the range of frequencies  
-        print ("Running Amplitude Modulaton Tests")
+        print("Running Amplitude Modulaton Tests")
         for f in fmod:
-            print "Fmod = ", float(f)/10
-            WfrmParams[None][Fx][:] = float(f)/10
+            print("Fmod = ", float(f)/10)
+            self.fgen.params['element 0'][Fx][:] = float(f)/10
+            #WfrmParams[None][Fx][:] = float(f)/10
             
-            # set the waveform params            
-            try:
-                Error = lta.__set__('FGen.FunctionParams',WfrmParams)
-            except Exception as ex:
-                print Error
-                raise type(ex)("Measurement Bandwidth Test - unable to set Waveform Parameters . " +ex.message)
+            # set the waveform params  
+            self.fgen.set_params()
+            # try:
+            #     Error = lta.__set__('FGen.NiPxi6733.,FunctionParams',WfrmParams)
+            # except Exception as ex:
+            #     print (Error)
+            #     raise type(ex)("Measurement Bandwidth Test - unable to set Waveform Parameters . " +ex.message)
             
             # run one test
             try:
-                lta.s.settimeout(200)                       
-                Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
-                lta.s.settimeout(10)                            
+                self.lta.s.settimeout(200)                       
+                Error = self.lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                self.lta.s.settimeout(10)                            
                                                                            
             except Exception as ex:
                 print (Error)
-                raise type(ex)("Kx="+str(WfrmParams[None][Kx][1]) 
+                raise type(ex)("Kx="+str(self.fgen.params['element 0'][Kx][1]) 
                                     +", fmod="+ str(f)+"Hz, Fs="+str(self.Fs)+". "+ex.message+ex.message) 
                                     
                                     
-        WfrmParams[None][Fx][:] = float(0)
-        WfrmParams[None][Kx][:] = float(0)
+        self.fgen.params['element 0'][Fx][:] = float(0)
+        self.fgen.params['element 0'][Kx][:] = float(0)
+        # WfrmParams[None][Fx][:] = float(0)
+        # WfrmParams[None][Kx][:] = float(0)
         
         # Phase Modulation Tests
         print ("Running Phase Modulation Tests")
-        WfrmParams[None][Ka][:] = float(0.1)
+        self.fgen.params['element 0'][Ka][:] = float(0.1)
+        #WfrmParams[None][Ka][:] = float(0.1)
         for f in fmod:
-            print "Fmod = ", float(f)/10
-            WfrmParams[None][Fa][:] = float(f)/10
+            print ("Fmod = ", float(f)/10)
+            self.fgen.params['element 0'][Fa][:] = float(f)/10
+            #WfrmParams[None][Fa][:] = float(f)/10
+            self.fgen.set_params()
             
             # set the waveform params            
-            try:
-                Error = lta.__set__('FGen.FunctionParams',WfrmParams)
-            except Exception as ex:
-                print Error
-                raise type(ex)("Measurement Bandwidth Test - unable to set Waveform Parameters . " +ex.message)
+            # try:
+            #     Error = self.lta.__set__('FGen.NiPxi6733.,FunctionParams',WfrmParams)
+            # except Exception as ex:
+            #     print(Error)
+            #     raise type(ex)("Measurement Bandwidth Test - unable to set Waveform Parameters . " +ex.message)
             
             # run one test
             try:
-                lta.s.settimeout(200)                       
-                Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
-                lta.s.settimeout(10)                            
+                self.lta.s.settimeout(200)                       
+                Error = self.lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                self.lta.s.settimeout(10)                            
                                                                            
             except Exception as ex:
                 print (Error)
-                raise type(ex)("Ka="+str(WfrmParams[None][Ka][1]) 
+                raise type(ex)("Ka="+str(self.fgen.params['element 0'][Ka][1]) 
                                     +", fmod="+ str(f)+"Hz, Fs="+str(self.Fs)+". "+ex.message+ex.message) 
                                     
            
 # Step Changes
     def Step(self):
-        print("Performing Step Chage Tests")
+        """
+        Uses the module instances:
+        FGen.NiPxi65733.PMU (Step)
+        Analysis.PmuAnalysis.PMU (Step)
+    
+        """              
+        
+        print("Performing Step Change Tests")
+        
+        self.fgen = M.NPModuleFGen(class_type='NiPxi6733',instance='PMU (Step)',lta=self.lta)
+        self.analysis = M.NPModuleAnalysis(class_type='PmuAnalysis',instance='PMU (Step)',lta=self.lta)                             
         
         stepTime = 1;
         incr = .1/self.Config['F0']
@@ -381,11 +491,14 @@ class StdTests(object):
                 self.set_init()     # default function parameters
                 
                 # Step index                    
-                params = lta.__get__('FGen.FunctionParams')
-                params[None][KaS][:] = float(magAmpl)
-                Error = lta.__set__('FGen.FunctionParams',params)
+                #params = lta.__get__('FGen.NiPxi6733.,FunctionParams')
+                self.fgen.params['element 0'][KaS][:] = float(magAmpl)
+                self.fgen.set_params()
+                #params[None][KaS][:] = float(magAmpl)
+                #Error = lta.__set__('FGen.NiPxi6733,FunctionParams',params)
                 
-                params = lta.__get__('FGen.FunctionArbs')  
+                self.fgen.get_arbs()
+                #params = lta.__get__('FGen.NiPxi6733.,FunctionArbs')  
                 
             except Exception as ex:
                 raise type(ex) ("Step Change Test Failure:"+ex.message)
@@ -393,12 +506,14 @@ class StdTests(object):
                 
             while iteration > 0:
                 #print('iterations remaining = ', iteration ', T0 = ',stepTime) 
-                params['FunctionConfig']['T0'] = -float(stepTime)
+                self.fgen.arbs['FunctionConfig']['T0'] = -float(stepTime)
+                #params['FunctionConfig']['T0'] = -float(stepTime)
+                self.fgen.set_arbs()
                 try: 
-                    Error = lta.__set__('FGen.FunctionArbs',params)
-                    lta.s.settimeout(200)
-                    Error = lta.__multirun__(self.ntries,self.secwait,self.ecode)
-                    lta.s.settimeout(10)                       
+                    #Error = lta.__set__('FGen.NiPxi6733.,FunctionArbs',params)
+                    self.lta.s.settimeout(200)
+                    Error = self.lta.__multirun__(self.ntries,self.secwait,self.ecode)
+                    self.lta.s.settimeout(10)                       
                 except Exception as ex:
                     print (Error)
                     raise type(ex)(str(iteration)+ex.message) 
@@ -413,81 +528,85 @@ class StdTests(object):
 
 # ------------------ MAIN SCRIPT ---------------------------------------------
 #------------------- following code must be in all scripts--------------------
-lta = Lta("127.0.0.1",60100)    # all scripts must create  an Lta object
+#lta = Lta("127.0.0.1",60100)    # all scripts must create  an Lta object
 
-try:
-    lta.connect()                   # connect to the Labview Host
+#try:
+#    lta.connect()                   # connect to the Labview Host
 #---------------------Script code goes here------------------------------------
 
-    print lta
 
-    UsrTimeout = lta.s.gettimeout()
-    
-    Duration = 1    # Analysis.Duration
-    
-    # Analysis.Config
-    Config = OrderedDict()      
-    Config['F0'] = np.uint32(50) 
-    Config['SettlingTime']= 0.0
-    Config['AnalysisCycles'] = float(6.0)
-    Config['SampleRate'] = float(48000)
-    Config['NumChannels']= np.uint32(6)   
-    
+#UsrTimeout = lta.s.gettimeout()
+
+Duration = 1    # Analysis.Duration
+
+# Analysis.Config
+Config = OrderedDict()      
+Config['F0'] = np.uint32(50) 
+Config['SettlingTime']= 0.0
+Config['AnalysisCycles'] = float(6.0)
+Config['SampleRate'] = float(48000)
+Config['NumChannels']= np.uint32(6)   
+
    
-    Fs_ini = 50.  #doesnt matter this default value, to be changed later
-    #Fs_list = {60:[10,12,15,20,30,60],50:[10,25,50], 63:[10]} #63 inserted for testing
-    Fs_list = {50:{50}}
-    Vnom = 70.
-    Inom = 5.
-    PMUclass = "M"
-    Fs = 50.
-    
-    #list of exceptions             
-    ex_list = []
+Fs_ini = 50.  #doesnt matter this default value, to be changed later
+#Fs_list = {60:[10,12,15,20,30,60],50:[10,25,50], 63:[10]} #63 inserted for testing
+Fs_list = {50:{50}}
+Vnom = 70.
+Inom = 5.
+PMUclass = "M"
+Fs = 50.
+
+#list of exceptions             
+ex_list = []
 
 
-    # StdTests instance
-    t = StdTests(Duration,Config,Vnom,Inom,PMUclass,Fs)
-    
-    
-    
-    #list of tests to be performed
-    func_list = [#t.FreqRange,
-                 #t.MagRange, 
-                 #t.Harm,
-                 #t.IHarm
-                 t.MeasBand, 
-                 #t.RampFreq, 
-                 #t.Step 
-                 #t.RepLatency
-                 ]     
+# StdTests instance
+t = StdTests(Duration,Config,Vnom,Inom,PMUclass,Fs)
 
 
 
-    #execution of tests for each Fs
+#list of tests to be performed
+func_list = [t.FreqRange,
+             #t.MagRange, 
+             #t.Harm,
+             #t.IHarm
+             #t.MeasBand, 
+             #t.RampFreq, 
+             #t.Step 
+             #t.RepLatency
+             ]     
+
+
+
+#execution of tests for each Fs
+try:
+    UsrTimeout = t.lta.s.gettimeout()
+
     for my_func in func_list:
         for Fs in Fs_list[Config['F0']]:
-            #t.SetFs(Fs); print("\n\n ---- Test for Fs = " + str(Fs))
+            #t.SetFs(Fs); print((("\n\n ---- Test for Fs = " + str(Fs))
             try:
-                lta.s.settimeout(10)   
+                t.lta.s.settimeout(10)   
                 my_func()
-                lta.s.settimeout(UsrTimeout)
+                t.lta.s.settimeout(UsrTimeout)
             except Exception as ex:
-                print "Exception going to LV in the end:"
-                print ex
+                t.lta.close()
+                print("Exception going to LV in the end:")
+                print(ex)
                 ex_list.append(ex)
                 err = Lta_Error(ex,sys.exc_info())  #format a labview error
-                lta.send_error(err,3,'log')       #send the error to labview for log
+                t.lta.send_error(err,3,'log')       #send the error to labview for log
     
-    print "FINAL ERROR LIST::"
-    print ex_list
+    t.lta.close()
+    print ("FINAL ERROR LIST::")
+    print (ex_list)
     for ex in ex_list:
         err = Lta_Error(ex,sys.exc_info())  #format a labview error
-        lta.send_error(err,3,'log')       #send the error to labview for log
+        t.lta.send_error(err,3,'log')       #send the error to labview for log
 
 #------------------all scripts should send their errors to labview------------
 except Exception as ex:
-    err = Lta_Error(ex,sys.exc_info())  #format a labview error
-    lta.send_error(err,3,'Abort')       #send the error to labview for display
-    lta.close()
-    print err
+    err = t.Lta_Error(ex,sys.exc_info())  #format a labview error
+    t.lta.send_error(err,3,'Abort')       #send the error to labview for display
+    t.lta.close()
+    print (err)
