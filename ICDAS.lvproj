@@ -282,6 +282,7 @@
 				<Item Name="niScope Configure Trigger Width.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Width.vi"/>
 				<Item Name="niSync Set Time Reference (802.1AS).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Set Time Reference (802.1AS).vi"/>
 				<Item Name="hp3458a IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/hp3458a/hp3458a.llb/hp3458a IVI Error Converter.vi"/>
+				<Item Name="Fetch Extended Background Measurements.vi" Type="VI" URL="/&lt;instrlib&gt;/NH Research 9400 Series/Public/Data/Fetch Extended Background Measurements.vi"/>
 			</Item>
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
@@ -961,13 +962,6 @@
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="NHRDCPowerModule.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="/C/Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
-			<Item Name="chr62000P_32.dll" Type="Document" URL="chr62000P_32.dll">
-				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
-			</Item>
-			<Item Name="Device(s)Settings_old.ctl" Type="VI" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/NHRGridSimClass/TypeDefs/Device(s)Settings_old.ctl"/>
-			<Item Name="NHRGrid_Hardware.ctl" Type="VI" URL="../NistPluggableModules/AcPwr/AcPwrPlugins/NHRGridSimClass/TypeDefs/NHRGrid_Hardware.ctl"/>
-			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
