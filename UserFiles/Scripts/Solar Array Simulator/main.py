@@ -12,7 +12,7 @@ requires NIST_SG_Solarsim which acn be installed into the pythin environment usi
 
 """
 debug = True    #if true, show the debug plots
-
+vRef_Min = 25.0
 
 # imports of custom modules
 # SG_SolarSim
@@ -51,10 +51,14 @@ def main(debug=False):
     nhr_dc = NPModuleAcPwr(class_type='NHRDCPower', instance="SolarArraySim", lta=lta )
     chroma_load = NPModuleAcPwr(class_type='ChromaAcLoad', instance='SolarArraySim', lta=lta)
 
+    nhr_dc.get_config()
+    #print(nhr_dc.config)
     # disable the NHRDC voltage control.  After this, the NHRDC will operate as a current source and go to any
     # voltage configured in the Chroma Load which is acting as a constant voltage load
-    nhr_dc.get_config()
-    nhr_dc.config['NHRDC']['Modules'][0]['Device(s)Settings']['OutputSettings']['Enable Voltage'] = False
+    #nhr_dc.config['NHRDC']['Modules'][0]['Device(s)Settings']['OutputSettings']['Enable Voltage'] = False
+
+    # instead of disabling the control, set the voltage to 45 volts
+    nhr_dc.config['NHRDC']['Modules'][0]['Device(s)Settings']['OutputSettings']['Voltage (V)'] = float(45.0)
     nhr_dc.set_config()
 
     # get the load configuration to use in the outer loop
@@ -76,6 +80,8 @@ def main(debug=False):
         ax.set_ybound(10)
         fig.show()
 
+    v_ref = vRef_Min
+    v_ref_old = None
     while 1:
         if ss_gui.state == 'CLOSED':
             break
@@ -125,9 +131,17 @@ def main(debug=False):
             i_pv = nhr_dc.meas['element 0'][1][None][None]['Y'][0]
 
             # iterate the MPPT to determine the next voltage setting for the load
-            v_ref = mppt.inc_cond(v_pv, i_pv)
-            if v_ref < 10:
-                v_ref = 10
+
+            #this next bit of code overcomes limitations of the chroma load
+            v_ref_new = mppt.inc_cond(v_pv, i_pv)
+            if v_ref_old == None:
+                v_ref_old = v_ref_new
+            v_incr = v_ref_new - v_ref_old
+            v_ref_old = v_ref_new
+            v_ref += v_incr
+            if v_ref <= vRef_Min:
+                v_ref = vRef_Min
+            print(f'v_pv= {v_pv}, i_pv={i_pv}, v_ref={v_ref}, v_incr={v_incr}')
 
             # set the chroma load to the new reference voltage
             command = SsmAcPwrSetParameter(
@@ -150,8 +164,11 @@ def main(debug=False):
                 ax.plot(v_pv, i_pv, marker = 'o')
                 fig.show()
 
+        else:
+            v_ref = vRef_Min
+            v_ref_old = None
 
-
+            #ss_gui.fig.cla()
 
 if __name__ == "__main__":
     main(debug=debug)
